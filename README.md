@@ -10,7 +10,7 @@ To get started creating custom *Marble It Up!* Levels you will need a few additi
 * Unity Editor (2017.2.1 or newer)
 * Pro Builder Unity Asset (free) or other 3D Modeling software
 
-Unity is needed to import the MIU_LevelGen.unitypackage and export Unity Scenes into .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
+Unity is needed to import the *MIU_LevelKit.unitypackage* and export Unity Scenes into .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
 Once you have Unity and your model creation system of choice, you’re ready to start building!
 
 # **Importing the UnityPackage**
@@ -20,7 +20,7 @@ From the top bar select *Assets > Import Package > Custom Package...*
 
  ![image alt text](ReadmeImages/image_1.png)
 
-Then select  MIU_LevelGen.unitypackage which can be found in the Zipped "MIU Map Tester" file next to the *Marble It Up!* game executable. Select Ok and wait for the package to complete importing.
+Then select  MIU_LevelGen.unitypackage which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
 
 You should see a new option on the Unity toolbar called "Marble It Up". 
 
@@ -46,8 +46,8 @@ Before we begin creating a new custom level, let’s take a look at the included
 Let’s take a look at how it’s laid out in the Scene Hierarchy:
 Here we can see that the level components are split into three groups **Gameplay**, **Static**, and **Skybox**. 
 
-The **Gameplay** group contains items that are specific to gameplay such as the Start/End pads, the level bounds, power-ups, moving platforms, gems, etc.
-The **Static** group contains all the map geometry that doesn’t move during play as well as the sun object for lighting direction.
+The **Gameplay** group contains items that are specific to gameplay such as the Start/End pads, the level bounds, power-ups, moving platforms, gems, etc.<br>
+The **Static** group contains all the map geometry that doesn’t move during play as well as the sun object for lighting direction.<br>
 The **Skybox** group contains all the non-interactive objects and effects such as signs, clouds, and stars.
 
 The final object is the Preview Camera which will provide the viewport in during level select.
@@ -66,7 +66,7 @@ In the Scene Hierarchy open up the Learning to Roll object and you will find 6 o
 
 Select **Cube (6)** and Open up the *Mesh Renderer* component by clicking on the arrow on the left side and you should see a list of Materials (open it up if closed by clicking on the arrow). You should see 3 Materials listed: *Tile01-AA*, *Fill01-C Local*, and *Edge C*. Material links are based on name, so these would work, but we have some sample materials to use that have actual graphics and are easier to work with.
 
-We can find the correct materials in *MIU > Level Materials* in the Project Window. *Tile01-AA* is in the *Tiles/Blank* folder, *Fill01-C Local* is found in the *Geometry/Fills* folder, and* Edge C* is found in the *Trim* folder.
+We can find the correct materials in *MIU > Level Materials* in the Project Window. *Tile01-AA* is in the *Tiles/Blank* folder, *Fill01-C Local* is found in the *Geometry/Fills* folder, and *Edge C* is found in the *Trim* folder.
 
 To replace the materials, you can drag them from the Project Window and drop them on top of the current material inside the Materials array (*Hint: You can lock the mesh to the inspector window using the lock icon at the top right of the window to prevent selecting the materials*).
 
@@ -74,11 +74,11 @@ Repeat that process for the remaining 5 objects in the LearningToRoll group and 
 
 ![image alt text](ReadmeImages/image_6.png)
 
-Now we have the visual meshes ready, but we need to make them physical! So, select all 6 objects inside the LearningToRoll object and press the Add Component button in the Inspector Window. Type in "Mesh Collider" and select that when it shows up. Then at the top right of the Inspector Window check the “Static” checkbox. This tells the Level Builder that the geometry won’t move and that it should treat it as collidable with the marble. Finally drag and drop the entire LearningToRoll object into the Static group in the Scene Hierarchy.
+Now we have the visual meshes ready, but we need to make them physical! So, select all 6 objects inside the LearningToRoll object and press the Add Component button in the Inspector Window. Type in "*Mesh Collider*" and select that when it shows up. Then at the top right of the Inspector Window check the “*Static*” checkbox. This tells the Level Builder that the geometry won’t move and that it should treat it as collidable with the marble. Finally drag and drop the entire *LearningToRoll* object into the Static group in the Scene Hierarchy.
 
 Now, any level requires a **Start Pad**, **End Pad**, and **Level Bounds** ... so lets make them!
 
-Creating special gameplay items like Pads, Power-ups, Bumpers, etc is easy. You can create them by selecting *Marble It Up > Create* and clicking on the object you want to make. Let’s make a Start Pad, an End Pad, and the Level Bounds which are all under the *Core *create grouping.
+Creating special gameplay items like Pads, Power-ups, Bumpers, etc is easy. You can create them by selecting *Marble It Up > Create* and clicking on the object you want to make. Let’s make a Start Pad, an End Pad, and the Level Bounds which are all under the *Core* create grouping.
 
 Let’s move the Start and End pads into their correct locations at the start and end of the level by using the movement arrows in the Scene view. Make sure to turn on the icons in the Gizmos dropdown in the Scene View and increase the 3D Icon Size so that they are clearly visible.
 
@@ -96,11 +96,11 @@ We’re almost ready to export the level, but lets add a rock and a bumper first
 
 You can add a bumper the same way you added the Start Pad, which is under *Marble It Up > Create > Gameplay > Bumper*, place it wherever you like on the level.
 
-Now let’s also create a Rock. There are a number of different customizable objects available to add into your levels, they can be found in the Prefabs folder ( *MIU/Prefabs *). To use one, just drag it into the Scene View or the Hierarchy. Let’s bring out RockFormation1.
+Now let’s also create a Rock. There are a number of different customizable objects available to add into your levels, they can be found in the Prefabs folder ( *MIU/Prefabs* ). To use one, just drag it into the Scene View or the Hierarchy. Let’s bring out RockFormation1.
 
 The difference between objects we create from the Marble It Up > Create menu and objects from the Prefabs folder is that Created objects can be moved/rotated/scaled but otherwise can’t be modified, whereas objects from the Prefabs folder can be modified and added to. 
 
-For example, let’s take our RockFormation1 that we brought into the scene and add *another *rock to it, creating an entirely new formation! Just copy and paste Rock1 inside the formation and then move that around to wherever you want.
+For example, let’s take our RockFormation1 that we brought into the scene and add *another* rock to it, creating an entirely new formation! Just copy and paste Rock1 inside the formation and then move that around to wherever you want.
 
 Now your scene should look something similar to this:
 
@@ -116,7 +116,7 @@ The final step is to set up the preview camera. In your Scene View using WSAD mo
 
 Now we’re ready to test. To create your .level file select Marble It Up > Level Baker. This will open up a new window with a "Bake" button. Press that and voilà! A level file has been created in your Assets folder.
 
-To test it out, we’ll need to use the Map Tester application located in the same .zip file where we found the UnityPackage. Open that up, select Load Map, and select the newly created .level file (which is named the same as your saved scene name).
+To test it out, we’ll need to launch *Marble It Up!* on Steam in Level Testing mode. Open that up, select Load Map, and select the newly created .level file (which is named the same as your saved scene name).
 
 If everything works as intended you should be rewarded with a view of your custom map:
 
