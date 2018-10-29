@@ -119,7 +119,7 @@ _**“Level Kit Licensee”**_  means a third party who is separately licensed b
 
 _**“Marble It Up! Level Creation Kit”**_  means the proprietary computer software package known as the Marble It Up! Level Creation Kit and any updates or upgrades to the program made available by MIU.
 
-_**“MIU” **_ means Marble It Up, LLC, an Oregon limited liability company, P.O. Box #50068
+_**“MIU”**_  means Marble It Up, LLC, an Oregon limited liability company, P.O. Box #50068
 Eugene, Oregon 97405, and can be contacted at https://marbleitup.com/contact/.
 
 _**“MIU Trademarks”**_  means Marble It Up!TM; other trademarks, service marks, trade names and logos associated with MIU, MIU’s games and other intellectual property; and the Marble It Up! Level Creation Kit.
