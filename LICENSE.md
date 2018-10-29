@@ -130,13 +130,13 @@ _**“Licensed Technology”**_  means any or all of the Level Kit Code and the 
 
 _**“Product”**_  means any product developed under this Agreement that is made using the Licensed Technology or that combines the Licensed Technology with any other software or content, regardless of how much or little of the Licensed Technology is used.
 
-_**“Source Code” **_ means the human readable form of a software program, including all modules it contains, plus any associated interface definition files, scripts used to control compilation, and installation of an executable (object code).
+_**“Source Code”**_  means the human readable form of a software program, including all modules it contains, plus any associated interface definition files, scripts used to control compilation, and installation of an executable (object code).
 
-_**“Third Party Software” **_ means third party software components included in the Level Kit Code.
+_**“Third Party Software”**_  means third party software components included in the Level Kit Code.
 
-_**“UGC” **_ means user generated content exported in .level file using the Marble It Up! Level Creation Kit.
+_**“UGC”**_  means user generated content exported in .level file using the Marble It Up! Level Creation Kit.
 
-_**“User” **_ means an individual user who uses a valid Account to access the Level Kit Code and Level Kit Content.
+_**“User”**_  means an individual user who uses a valid Account to access the Level Kit Code and Level Kit Content.
 
 _**“Version”**_ means any updated or upgraded version of the Level Kit Code or Level Kit Content that MIU chooses to make available to the public.
 
