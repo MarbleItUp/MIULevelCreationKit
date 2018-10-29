@@ -13,16 +13,18 @@ To get started creating custom *Marble It Up!* Levels you will need a few additi
 Unity is needed to import the *MIU_LevelKit.unitypackage* and export Unity Scenes into .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
 Once you have Unity and your model creation system of choice, you’re ready to start building!
 
+Please also review the [Level Creation Kit EULA](https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/LICENSE.md) before continuing.
+
 # **Importing the UnityPackage**
 
-Importing the Level Generation tools into Unity is easy! 
+Importing the Level Generation tools into Unity is easy!
 From the top bar select *Assets > Import Package > Custom Package...*
 
  ![image alt text](ReadmeImages/image_1.png)
 
 Then select  MIU_LevelGen.unitypackage which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
 
-You should see a new option on the Unity toolbar called "Marble It Up". 
+You should see a new option on the Unity toolbar called "Marble It Up".
 
 Now let’s make a few adjustments to the project so that what you see in the editor is as close as possible to what you’ll see in the game.
 First, select Edit > Project Settings > Quality and adjust the settings to made this:
@@ -44,7 +46,7 @@ Before we begin creating a new custom level, let’s take a look at the included
 ![image alt text](ReadmeImages/image_4.png)
 
 Let’s take a look at how it’s laid out in the Scene Hierarchy:
-Here we can see that the level components are split into three groups **Gameplay**, **Static**, and **Skybox**. 
+Here we can see that the level components are split into three groups **Gameplay**, **Static**, and **Skybox**.
 
 The **Gameplay** group contains items that are specific to gameplay such as the Start/End pads, the level bounds, power-ups, moving platforms, gems, etc.<br>
 The **Static** group contains all the map geometry that doesn’t move during play as well as the sun object for lighting direction.<br>
@@ -98,7 +100,7 @@ You can add a bumper the same way you added the Start Pad, which is under *Marbl
 
 Now let’s also create a Rock. There are a number of different customizable objects available to add into your levels, they can be found in the Prefabs folder ( *MIU/Prefabs* ). To use one, just drag it into the Scene View or the Hierarchy. Let’s bring out RockFormation1.
 
-The difference between objects we create from the Marble It Up > Create menu and objects from the Prefabs folder is that Created objects can be moved/rotated/scaled but otherwise can’t be modified, whereas objects from the Prefabs folder can be modified and added to. 
+The difference between objects we create from the Marble It Up > Create menu and objects from the Prefabs folder is that Created objects can be moved/rotated/scaled but otherwise can’t be modified, whereas objects from the Prefabs folder can be modified and added to.
 
 For example, let’s take our RockFormation1 that we brought into the scene and add *another* rock to it, creating an entirely new formation! Just copy and paste Rock1 inside the formation and then move that around to wherever you want.
 
@@ -146,7 +148,7 @@ The following properties can be modified to change how the platform behaves:
 - **Delta Rotation** - Rotational Movement over duration
 - **Pause Time** - Time to Pause after each movement period
 - **Move Time** - Time taken per movement period
-- **Move First** - Move before pausing / pause before moving (at start) 
+- **Move First** - Move before pausing / pause before moving (at start)
 
 Moving Platforms must also have a Mesh Collider component to work properly due to how the physics system works. It is recommended, but not required, to also have Mesh Renderer and Mesh Filter components so that the moving platform physics bounds are visible in the game.
 
@@ -165,4 +167,3 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 *surface.gravity* - This is the Gravity surface: anywhere this material is used will cause gravity to shift, such that the surface area touched is facing upward. The actual implementation of this surface gives some leniency to ‘touch’ and thus the area affected while in contact is larger than the actual contact area. For this reason it is highly suggested not to use this material on small objects with complex surfaces over a small area as gravity is likely to rapidly shift as the game tries to determine which way should be up based on many different points.
 
 An continually updated version of this document can be found [here](https://docs.google.com/document/d/1SNe0OEO1ypB6fZpyIw2OF8alsOiLxj-6cVrjkIkLBes).
-
