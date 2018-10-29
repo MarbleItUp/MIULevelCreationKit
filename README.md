@@ -10,7 +10,7 @@ To get started creating custom *Marble It Up!* Levels you will need a few additi
 * Unity Editor (2017.2.1 or newer)
 * Pro Builder Unity Asset (free) or other 3D Modeling software
 
-Unity is needed to import the *MIU_LevelKit.unitypackage* and export Unity Scenes into .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
+Unity is needed to import the *MIU_LevelCreationKit.unitypackage* and export Unity Scenes into .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
 Once you have Unity and your model creation system of choice, you’re ready to start building!
 
 Please also review the [Level Creation Kit EULA](https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/LICENSE.md) before continuing.

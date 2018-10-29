@@ -1,0 +1,264 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d5ad6bbc67c684bb0185606bd3e6c5, type: 3}
+  m_Name: MapComponents
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 0}
+  materials:
+  - material: {fileID: 2100000, guid: 9897b02e0983c174c8a6afdcad430f14, type: 2}
+    name: SparkleStarField
+  - material: {fileID: 2100000, guid: 54bb1183f20f629489d7119be47e6523, type: 2}
+    name: GlowingDustStarField
+  - material: {fileID: 2100000, guid: a5945a9c7eb493a448e86dd0596eea22, type: 2}
+    name: Sparkle02
+  - material: {fileID: 2100000, guid: e216c0787d2a8ff4a907c718cd7fbacb, type: 2}
+    name: Particles_Speck
+  objects:
+  - name: EndPad
+    reference: {fileID: 1174410165699468, guid: 814cd116c3c551c4a96bc036383e9557,
+      type: 2}
+  - name: TutorialMessage
+    reference: {fileID: 1588205857615650, guid: 4c6c31f81b483fb42a90d08ec5180947,
+      type: 2}
+  - name: LevelBounds
+    reference: {fileID: 1505968401210530, guid: 21b9929ae70d9ad42bbd8eeb8c4acbac,
+      type: 2}
+  - name: StartPad
+    reference: {fileID: 1831274990334550, guid: 8d4ca6f9b72fb6043bdaf8c81471795a,
+      type: 2}
+  - name: Sign_TurnLeft
+    reference: {fileID: 1128563844720844, guid: 7b0da58e89a366d409351c12fe7c4bfa,
+      type: 2}
+  - name: Sign_TurnRight
+    reference: {fileID: 1811628812176984, guid: 269bb9d6640f71e41962bdc87d9bb3dd,
+      type: 2}
+  - name: Sign_Curvy
+    reference: {fileID: 1335277532304192, guid: 23460650ad533f84c89f25d0d1d097a5,
+      type: 2}
+  - name: Easter Egg
+    reference: {fileID: 1213826390272146, guid: 5745dbe0b15d727409e51b65c80ce0f7,
+      type: 2}
+  - name: Rings001
+    reference: {fileID: 1442390774572846, guid: 982c31d4effd77549a3cd290a123380b,
+      type: 2}
+  - name: Sign_DropOff
+    reference: {fileID: 1295225973418088, guid: 415bbe9734cc6e24c91600ff59d6dede,
+      type: 2}
+  - name: Gem
+    reference: {fileID: 1143352843897198, guid: 49a51a89af6d3aa46afc6318f6b3b728,
+      type: 2}
+  - name: Sign_Fork
+    reference: {fileID: 1919496235387410, guid: 954e2f68e0718c04eaf404386219d3f0,
+      type: 2}
+  - name: Tutorial Cross Section
+    reference: {fileID: 1552400966297542, guid: 6ffeb0254385be540be9fba8d8f7fae4,
+      type: 2}
+  - name: Sign_ContinuousTurn
+    reference: {fileID: 1166537651009664, guid: 4694624a8599eef4ab450563af3fdada,
+      type: 2}
+  - name: PyramidWithAnimation
+    reference: {fileID: 1904268131656636, guid: a4c4d76e40c494647896e49dd78f9383,
+      type: 2}
+  - name: Pyramid
+    reference: {fileID: 1219631098529388, guid: ba8eaede80fe4244fb864a4fa27c7840,
+      type: 2}
+  - name: GiantCrystal
+    reference: {fileID: 1574975575348268, guid: 02ae1a8dc4e0c5345a1cda12cdb0d2bc,
+      type: 2}
+  - name: Jump
+    reference: {fileID: 1943914695222776, guid: 4d763d9049a6b5845ba97e2f48608199,
+      type: 2}
+  - name: ShapeParticleBox004
+    reference: {fileID: 100000, guid: da10b887b540b2f489f13a66a4aee1cb, type: 3}
+  - name: Cube_particle
+    reference: {fileID: 1512668785783820, guid: 0b392c38e9574ac4896ab7bd6a88fee3,
+      type: 2}
+  - name: PixelPillar03
+    reference: {fileID: 1984147663732284, guid: d06bb7a0547f7544b8f846938fcf045b,
+      type: 2}
+  - name: Sign_Hazard
+    reference: {fileID: 1066305245767274, guid: 0a2a2255d20784f499aa26d379c3432c,
+      type: 2}
+  - name: Boost
+    reference: {fileID: 1534347579803534, guid: b48bea942ebbfa14d9448c0463356942,
+      type: 2}
+  - name: CheckPoint
+    reference: {fileID: 1870554978014218, guid: e0c71b1fbcb31c7468ec26261a5c1f1e,
+      type: 2}
+  - name: ShapeParticleBox003
+    reference: {fileID: 100000, guid: 098eb75669b41c641b4199d6b30be043, type: 3}
+  - name: DriftingAsteroidSpawner_1
+    reference: {fileID: 1662521246427750, guid: d8754445f4864ac47b6283a3ed92b09e,
+      type: 2}
+  - name: DriftingAsteroidSpawner_2
+    reference: {fileID: 1988513195208900, guid: fa2ecc86547d1f245ae397c80c6c9475,
+      type: 2}
+  - name: DriftingAsteroidSpawner_3
+    reference: {fileID: 1684685584054880, guid: ca2a7c5fd41efca439bf4980f0af4cdd,
+      type: 2}
+  - name: Sign_Icy
+    reference: {fileID: 1625532619920786, guid: 983b10274f185204b80f3ed9c9daa7d7,
+      type: 2}
+  - name: TimeTravel
+    reference: {fileID: 1545945835687656, guid: 04e5ed3090125014dbf3eea3e77e0adf,
+      type: 2}
+  - name: ShapeParticleBox02
+    reference: {fileID: 100000, guid: 991d29f7b80cab5438534d85e524ff57, type: 3}
+  - name: Featherfall
+    reference: {fileID: 1435937693171746, guid: f166b3a35ca94a84ba983c35c0cf1073,
+      type: 2}
+  - name: SpiralSquareMapped
+    reference: {fileID: 1267766583612586, guid: 61dede21f2683a4468546394e5818f27,
+      type: 2}
+  - name: ShapeParticleBox02Mapped
+    reference: {fileID: 1615119829353792, guid: 6cc08ea17490dd74a87882b4ed232bc8,
+      type: 2}
+  - name: RedAutomatedMover
+    reference: {fileID: 1782114369575606, guid: b526e29ae4bcc9b4381276aece32858e,
+      type: 2}
+  - name: Bumper
+    reference: {fileID: 1636908693329244, guid: 6bf8a6447fd165a4abcf55f29bcd8061,
+      type: 2}
+  - name: GiantCrystalBroken
+    reference: {fileID: 1678643177138320, guid: 455131bf85c79b44aa2fe8173865d5d5,
+      type: 2}
+  - name: Sign_Steep
+    reference: {fileID: 1167427502446420, guid: 19ccaa1095d6874438f9906905ee75d4,
+      type: 2}
+  - name: Elevator Triggered
+    reference: {fileID: 1341517584457588, guid: b1f06a330f045f549a3345f312cb7d11,
+      type: 2}
+  - name: IcosahedronBlueGreemMapped
+    reference: {fileID: 1453498228672360, guid: 77454f1f1801b3b4e90356c4ab24eb70,
+      type: 2}
+  - name: Huge Cog
+    reference: {fileID: 1993443198335628, guid: 659406080d6894a388f2feff221a0622,
+      type: 2}
+  - name: Stair Cog
+    reference: {fileID: 1129469441187506, guid: 69bc322ab298f485b9c17e4f70e7c8c2,
+      type: 2}
+  - name: Horizontal Gear Blue
+    reference: {fileID: 1538954350903820, guid: eb1cd50c8834d43108ecc13387e9d20d,
+      type: 2}
+  - name: Horizontal Gear Red
+    reference: {fileID: 1067469491721738, guid: fda1e495a633b42c5928fa6d4b841608,
+      type: 2}
+  - name: Cube (24)
+    reference: {fileID: 1283202515151062, guid: 7cf522460349b0f438045e4a10c565d0,
+      type: 2}
+  - name: Rings0010
+    reference: {fileID: 1611100079356738, guid: 45dda5f329d613146971f4352fa7cf29,
+      type: 2}
+  - name: ShapeParticleTriangleMapped01
+    reference: {fileID: 100000, guid: f043d1bb531569d40a0a8b0a0b849e8e, type: 3}
+  - name: OctohedronProp01
+    reference: {fileID: 1241212272907712, guid: c332e053c119be24eb8348852090ed01,
+      type: 2}
+  - name: TrianglePyramidProp
+    reference: {fileID: 1104805187071458, guid: f00463efff803904c908179955fc114b,
+      type: 2}
+  - name: Elevator Triggered Icy
+    reference: {fileID: 1824747666204994, guid: 837a8512dc3d8bb49b5f9cf71621d0d9,
+      type: 2}
+  - name: ShapeParticle_Ring01
+    reference: {fileID: 100000, guid: 4fc3b8b4a41aae1468c9b9d768cec85a, type: 3}
+  - name: ShapeParticle_Ring03
+    reference: {fileID: 100000, guid: c5b0fff8f81b791428a5ce97935bcd92, type: 3}
+  - name: CradleHub.lwo
+    reference: {fileID: 1442918572494060, guid: f48cde6462d13df4c8436522590067a8,
+      type: 2}
+  - name: GridVortex_Quads
+    reference: {fileID: 1001400337574668, guid: bd228c758c45c0b43b017c5729533171,
+      type: 2}
+  - name: ShapeParticleBox02Mapped0
+    reference: {fileID: 100000, guid: 714d173b569d0184e9bca15c863d8359, type: 3}
+  - name: BasherBlock01.lwo
+    reference: {fileID: 1587214212918242, guid: d37639c6b62b92c41a3e7d85e063d3fc,
+      type: 2}
+  - name: StayingAliveInnerRail_ShapeParticle02
+    reference: {fileID: 100000, guid: df2fab538f8ecf1498b0f70f5b824174, type: 3}
+  - name: ContraptionShapeParticle001
+    reference: {fileID: 100000, guid: dd9482938344a2e4b97d57424ab469c6, type: 3}
+  - name: ContraptionShapeParticle003
+    reference: {fileID: 100000, guid: db1e08542c1e2e84cb202c249e32ed08, type: 3}
+  - name: ContraptionShapeParticle004
+    reference: {fileID: 100000, guid: 1687d3c9f0c2b164487da4b21210a056, type: 3}
+  - name: ContraptionShapeParticle005
+    reference: {fileID: 100000, guid: 5589610aee8be8246be72064e89fce1e, type: 3}
+  - name: ContraptionShapeParticle006
+    reference: {fileID: 100000, guid: dc6cd0dc2251e6c4f9dc2e7ede3e6756, type: 3}
+  - name: ContraptionShapeParticle007
+    reference: {fileID: 100000, guid: a75b3481611d9b045896314cf4962daf, type: 3}
+  - name: CradleHub_Sml.lwo
+    reference: {fileID: 1857953872416492, guid: df349866e380c62439b8cad444788794,
+      type: 2}
+  - name: OcotgonMapped
+    reference: {fileID: 100000, guid: c7738c099a6a31b4f97e9f0a50570d91, type: 3}
+  - name: TrianglePyramidBlueGreen
+    reference: {fileID: 1022255864654356, guid: 8950c9d62e757f54fba53998d6b6207b,
+      type: 2}
+  - name: IceCrystalChunk02
+    reference: {fileID: 1517150027740876, guid: bcc7f12c548eb9f48a629ff2ceca661c,
+      type: 2}
+  - name: IceCrystalChunk01
+    reference: {fileID: 1871355530973362, guid: 8c34331c79e4e3a47965ad3397269db8,
+      type: 2}
+  - name: WarpCoreParticlesGameObject
+    reference: {fileID: 1467377600348990, guid: 26d7a59d383a61940a90317063f5cde0,
+      type: 2}
+  - name: Drifters 3
+    reference: {fileID: 1703903361914040, guid: 4989db32d44e0f441aee7985eef459e6,
+      type: 2}
+  - name: Drifters 1
+    reference: {fileID: 1586969682155704, guid: 6b8c8bc2360c4d143bce43b291674b77,
+      type: 2}
+  - name: Vertigo_SpiralSquareMapped
+    reference: {fileID: 1526433568248548, guid: aa2bc70ec8e224f4eabb6b46d160cd99,
+      type: 2}
+  - name: UpTheWall_GridQuads
+    reference: {fileID: 1083041158480810, guid: 5eceb6b4ebf04e14c8aa18f13801c5cf,
+      type: 2}
+  - name: Icosphere01
+    reference: {fileID: 1736575353884486, guid: 17ac85be4cde7364a866b8abeb0e35ff,
+      type: 2}
+  - name: Icosphere02
+    reference: {fileID: 1886818949658036, guid: 8e219d3ec5f671440acf139921ef2794,
+      type: 2}
+  - name: GridVortex_Quads (1)
+    reference: {fileID: 1460765264139868, guid: 401978ff65d8bde45864352ccd6b396b,
+      type: 2}
+  - name: GridVortex_Quads0
+    reference: {fileID: 1278293446872320, guid: f669df5111f9ab947ae1319d85165432,
+      type: 2}
+  - name: BrokenCrystalRingDrifters
+    reference: {fileID: 1138314995867962, guid: 1027a150bb41e6e41b6229a2e9e7cde8,
+      type: 2}
+  - name: Octohedron
+    reference: {fileID: 1523166265908982, guid: dd11d74529daf614a89f5f55feae83d2,
+      type: 2}
+  - name: DSRockCluster02
+    reference: {fileID: 1601967979305788, guid: d89b09dcd91509144a72b79251361ca2,
+      type: 2}
+  - name: DSRockCluster01
+    reference: {fileID: 1018120317520804, guid: dfb1e67369afe79419b36950fecd6689,
+      type: 2}
+  - name: DSRockCluster03
+    reference: {fileID: 1588623659648530, guid: da59e6d8ed220534682250160adb92c4,
+      type: 2}
+  - name: BasherKingWIP1.lwo
+    reference: {fileID: 1486353331689142, guid: dc6d1d8c55c21c7418ff2d6eba6fdbdc,
+      type: 2}
+  - name: STAR_Falling
+    reference: {fileID: 1623454627377578, guid: 57148721b7fba724ca2a90991fefb785,
+      type: 2}
+  skyboxes:
+  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  tutorialSprites: []
