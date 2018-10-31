@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -28,22 +29,17 @@ public class MapComponents : ScriptableObject {
     public Material[] skyboxes;
     public Sprite[] tutorialSprites;
 
-    public void UpdatePlatformMaterials()
-    {
-
-    }
-
     public string ResolveMaterialName(string matName)
     {
         return matName;
     }
 
-    public string ResolveMaterialToId(Material material, bool dontAdd = false)
+    public string ResolveMaterialToId(Material material)
     {
         if(!material)
         {
             Debug.LogError("Got a null material!");
-            return materials[0].name;
+            return "NONE";
         }
 
         foreach(var mat in materials)
@@ -52,56 +48,42 @@ public class MapComponents : ScriptableObject {
                 return mat.name;
         }
 
-        if(dontAdd)
-            return null;
-        
-        var name = material.name;
-        var suffix = 0;
-        var searchName = name;
-        return searchName;
-    }
-
-    public Material ResolveMaterialFromID(string name)
-    {
-        foreach (var mat in materials)
-        {
-            if (mat.name == name)
-                return mat.material;
-        }
-        return null;
+        return material.name;
     }
 
     public string ResolveNameToPrefabID(string objectName)
     {
+        objectName = FixName(objectName);
         foreach (var note in objects)
         {
             if (note.name != objectName)
                 continue;
             return note.name;
         }
-        Debug.LogError("ResolveNameToPrefabID - Couldn't find '" + objectName + "' in prefab list.");
+        Debug.Log("No prefab found: " + objectName);
         return objectName;
     }
 
-    public GameObject ResolveIdToGameObject(string id)
+    public static int GetNumOf(string objectName)
     {
-        foreach (var note in objects)
+        GameObject[] obj = FindObjectsOfType<GameObject>();
+        int num = 0;
+        foreach (GameObject o in obj)
         {
-            if (note.name != id)
-                continue;
+            if (FixName(o.name) == objectName)
+                num++;
+        }
+        return num;
+    }
 
-            return note.reference;
-        }        
-        return null;
+    public static string FixName(string name)
+    {
+        Regex regex = new Regex("\\ \\(\\d*\\)");
+        return regex.Replace(name, "");
     }
 
     public int ResolveSpriteToID(Sprite sprt)
     {
-        for(int i=0; i<tutorialSprites.Length; i++)
-        {
-            if (sprt == tutorialSprites[i])
-                return i;
-        }
         return 0;
     }
 

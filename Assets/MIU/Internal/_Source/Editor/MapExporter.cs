@@ -54,40 +54,40 @@ public class MapExporter : EditorWindow
         LevelSerializer.failCause = "";
         Debug.Log("Starting Level Export");
 
-        if(GameObject.Find("SpawnPoint") == null)
+        if(MapComponents.GetNumOf("SpawnPoint") == 0)
         {
-            if (GameObject.Find("StartPad") == null)
+            if (MapComponents.GetNumOf("StartPad") != 1)
             {
-                LevelSerializer.failCause = "Singleplayer Level needs a StartPad!";
+                LevelSerializer.failCause = "Singleplayer Level needs one StartPad!";
             }
-            if (GameObject.Find("EndPad") == null)
+            if (MapComponents.GetNumOf("EndPad") != 1)
             {
-                LevelSerializer.failCause = "Singleplayer Level needs a EndPad!";
+                LevelSerializer.failCause = "Singleplayer Level needs one EndPad!";
             }
-            if (FindObjectOfType<LevelTiming>() == null)
+            if (FindObjectsOfType<LevelTiming>().Length != 1)
             {
-                LevelSerializer.failCause = "Singleplayer Level needs Medal Times!";
+                LevelSerializer.failCause = "Singleplayer Level needs one Level Times object!";
             }
         }  
         else
         {
-            if (GameObject.Find("StartPad") != null)
+            if (MapComponents.GetNumOf("StartPad") > 0)
             {
                 LevelSerializer.failCause = "Multiplayer Maps can't have StartPads.";
             }
-            if (GameObject.Find("EndPad") != null)
+            if (MapComponents.GetNumOf("EndPad") > 0)
             {
                 LevelSerializer.failCause = "Multiplayer Maps can't have EndPads.";
             }
-            if (FindObjectOfType<LevelTiming>() != null)
+            if (FindObjectsOfType<LevelTiming>().Length > 0)
             {
                 LevelSerializer.failCause = "Multiplayer Maps can't have timers.";
             }
         }
 
-        if (GameObject.Find("LevelBounds") == null)
+        if (MapComponents.GetNumOf("LevelBounds") != 1)
         {
-            LevelSerializer.failCause = "Level needs bounds!";
+            LevelSerializer.failCause = "Level needs one Level Bounds!";
         }
 
         var serializer = new LevelSerializer();

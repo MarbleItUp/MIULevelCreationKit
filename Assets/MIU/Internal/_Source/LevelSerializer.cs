@@ -200,7 +200,7 @@ public class LevelSerializer
         sh.Stream.WriteByte((byte)'m');
         sh.Stream.WriteByte((byte)'u');
         sh.Stream.WriteByte((byte)'l');
-        sh.Stream.WriteByte((byte)'3');
+        sh.Stream.WriteByte((byte)'4');
 
         if (GameObject.Find("StartPad") == null)
         {
@@ -224,6 +224,15 @@ public class LevelSerializer
         sh.Stream.WriteSingle(silver);
         sh.Stream.WriteSingle(gold);
         sh.Stream.WriteSingle(diamond);
+
+        var hashStream = new SerializerHelper();
+        hashStream.Write(scene);
+        string hash = "000-" + UnityEngine.Random.Range(0, int.MaxValue);
+        using (System.Security.Cryptography.SHA1CryptoServiceProvider sha1 = new System.Security.Cryptography.SHA1CryptoServiceProvider())
+        {
+            hash = Convert.ToBase64String(sha1.ComputeHash(hashStream.Stream.Buffer));
+        }
+        sh.Stream.WriteString(hash);
 
         // And write the scene.
         sh.Write(scene);
@@ -349,6 +358,7 @@ public class LevelSerializer
             skipChildren = true;
             doKeep = true;
         }
+        */
 
         var mta = go.GetComponent<MeshTunnelAnimator>();
         if(mta != null)
@@ -364,11 +374,10 @@ public class LevelSerializer
             if (mta.OverrideMaterial != null)
                 lo.properties[LevelObject.MESH_TUNNEL_ANIMATOR_MATERIAL] = mapComp.ResolveMaterialToId(mta.OverrideMaterial);
 
-            lo.properties[LevelObject.MESH_TUNNEL_ANIMATOR_DISPLAYMESH] = GetPrefabID(go.name, mta.DisplayMesh);
+            lo.properties[LevelObject.MESH_TUNNEL_ANIMATOR_DISPLAYMESH] = GetPrefabID(mta.DisplayMesh.name, mta.DisplayMesh);
 
             doKeep = true;
-        }
-        */
+        }      
 
         var ps = go.GetComponent<ParticleSystem>();
         if(ps != null)

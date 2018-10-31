@@ -90,7 +90,7 @@ public partial class SerializerHelper
     public void Write(Vector3Int value)
     {
         Stream.BeginWrite();
-        Stream.Position += UnityResolver.Instance.GetFormatter<Vector3Int>().Serialize(ref Stream.Buffer, Stream.Position, value, UnityResolver.Instance);
+        Stream.Position += new Vector3IntFormatter().Serialize(ref Stream.Buffer, Stream.Position, value, UnityResolver.Instance);
         Stream.EndWrite();
     }
 
@@ -305,6 +305,67 @@ public partial class SerializerHelper
                 default:
                     throw new Exception("Encountered (read) unknown dictionary entry type " + type);
             }
+        }
+    }
+
+    public sealed class Vector3IntFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::UnityEngine.Vector3Int>
+    {
+
+        public int Serialize(ref byte[] bytes, int offset, global::UnityEngine.Vector3Int value, global::MessagePack.IFormatterResolver formatterResolver)
+        {
+
+            var startOffset = offset;
+            offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 3);
+            offset += MessagePack.MessagePackBinary.WriteInt32(ref bytes, offset, value.x);
+            offset += MessagePack.MessagePackBinary.WriteInt32(ref bytes, offset, value.y);
+            offset += MessagePack.MessagePackBinary.WriteInt32(ref bytes, offset, value.z);
+            return offset - startOffset;
+        }
+
+        public global::UnityEngine.Vector3Int Deserialize(byte[] bytes, int offset, global::MessagePack.IFormatterResolver formatterResolver, out int readSize)
+        {
+            if (global::MessagePack.MessagePackBinary.IsNil(bytes, offset))
+            {
+                throw new InvalidOperationException("typecode is null, struct not supported");
+            }
+
+            var startOffset = offset;
+            var length = global::MessagePack.MessagePackBinary.ReadArrayHeader(bytes, offset, out readSize);
+            offset += readSize;
+
+            var __x__ = default(int);
+            var __y__ = default(int);
+            var __z__ = default(int);
+
+            for (int i = 0; i < length; i++)
+            {
+                var key = i;
+
+                switch (key)
+                {
+                    case 0:
+                        __x__ = MessagePack.MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 1:
+                        __y__ = MessagePack.MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 2:
+                        __z__ = MessagePack.MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    default:
+                        readSize = global::MessagePack.MessagePackBinary.ReadNextBlock(bytes, offset);
+                        break;
+                }
+                offset += readSize;
+            }
+
+            readSize = offset - startOffset;
+
+            var ____result = new global::UnityEngine.Vector3Int(__x__, __y__, __z__);
+            ____result.x = __x__;
+            ____result.y = __y__;
+            ____result.z = __z__;
+            return ____result;
         }
     }
 

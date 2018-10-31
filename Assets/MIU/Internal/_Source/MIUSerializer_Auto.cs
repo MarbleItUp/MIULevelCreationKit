@@ -1286,7 +1286,7 @@ public partial class SerializerHelper {
 		if(value.enabled == false) return;
 	}
 
-    /*
+
 	public void Write(MeshTunnelAnimator value)
 	{
 		// Special case for enabled. Skip if disabled.
@@ -1351,7 +1351,7 @@ public partial class SerializerHelper {
 		// Field Boolean
 		Stream.WriteBoolean(value.SpawnOnGrid);
 
-		// Field Vector3Int
+        // Field Vector3Int
 		Write(value.GridSize);
 
 		// Field Boolean
@@ -1405,101 +1405,101 @@ public partial class SerializerHelper {
 		Write(value.Color);
 	}
 
+    /*
+public void Write(SpawnDriftingObjects value)
+{
+    // Special case for enabled. Skip if disabled.
+    Stream.WriteBoolean(value.enabled);
+    if(value.enabled == false) return;
 
-	public void Write(SpawnDriftingObjects value)
-	{
-		// Special case for enabled. Skip if disabled.
-		Stream.WriteBoolean(value.enabled);
-		if(value.enabled == false) return;
-		
-		// Property useGUILayout from MonoBehaviour
-		
-		// Property runInEditMode from MonoBehaviour
-		
-		// Property isActiveAndEnabled from Behaviour
-		
-		// Property transform from Component
-		
-		// Property gameObject from Component
-		
-		// Property tag from Component
-		
-		// Property rigidbody from Component
-		
-		// Property rigidbody2D from Component
-		
-		// Property camera from Component
-		
-		// Property light from Component
-		
-		// Property animation from Component
-		
-		// Property constantForce from Component
-		
-		// Property renderer from Component
-		
-		// Property audio from Component
-		
-		// Property guiText from Component
-		
-		// Property networkView from Component
-		
-		// Property guiElement from Component
-		
-		// Property guiTexture from Component
-		
-		// Property collider from Component
-		
-		// Property collider2D from Component
-		
-		// Property hingeJoint from Component
-		
-		// Property particleEmitter from Component
-		
-		// Property particleSystem from Component
-		
-		// Property name from Object
-		
-		// Property hideFlags from Object
+    // Property useGUILayout from MonoBehaviour
 
-		// Field GameObject
+    // Property runInEditMode from MonoBehaviour
 
-		// Field Int32
-		Stream.WriteInt32(value.SpawnCount);
+    // Property isActiveAndEnabled from Behaviour
 
-		// Field Single
-		Stream.WriteSingle(value.RadiusMin);
+    // Property transform from Component
 
-		// Field Single
-		Stream.WriteSingle(value.RadiusMax);
+    // Property gameObject from Component
 
-		// Field Single
-		Stream.WriteSingle(value.RandomScaleMin);
+    // Property tag from Component
 
-		// Field Single
-		Stream.WriteSingle(value.RandomScaleMax);
+    // Property rigidbody from Component
 
-		// Field Single
-		Stream.WriteSingle(value.ItemSpinSpeedMin);
+    // Property rigidbody2D from Component
 
-		// Field Single
-		Stream.WriteSingle(value.ItemSpinSpeedMax);
+    // Property camera from Component
 
-		// Field Single
-		Stream.WriteSingle(value.OverallSpinSpeedMin);
+    // Property light from Component
 
-		// Field Single
-		Stream.WriteSingle(value.OverallSpinSpeedMax);
+    // Property animation from Component
 
-		// Field List<GameObject>
+    // Property constantForce from Component
 
-		// Field List<Single>
-		//Write(value.SpawnedObjectSpins);
+    // Property renderer from Component
 
-		// Field Single
-		Stream.WriteSingle(value.OverallSpinSpeed);
-	}
-        */
+    // Property audio from Component
+
+    // Property guiText from Component
+
+    // Property networkView from Component
+
+    // Property guiElement from Component
+
+    // Property guiTexture from Component
+
+    // Property collider from Component
+
+    // Property collider2D from Component
+
+    // Property hingeJoint from Component
+
+    // Property particleEmitter from Component
+
+    // Property particleSystem from Component
+
+    // Property name from Object
+
+    // Property hideFlags from Object
+
+    // Field GameObject
+
+    // Field Int32
+    Stream.WriteInt32(value.SpawnCount);
+
+    // Field Single
+    Stream.WriteSingle(value.RadiusMin);
+
+    // Field Single
+    Stream.WriteSingle(value.RadiusMax);
+
+    // Field Single
+    Stream.WriteSingle(value.RandomScaleMin);
+
+    // Field Single
+    Stream.WriteSingle(value.RandomScaleMax);
+
+    // Field Single
+    Stream.WriteSingle(value.ItemSpinSpeedMin);
+
+    // Field Single
+    Stream.WriteSingle(value.ItemSpinSpeedMax);
+
+    // Field Single
+    Stream.WriteSingle(value.OverallSpinSpeedMin);
+
+    // Field Single
+    Stream.WriteSingle(value.OverallSpinSpeedMax);
+
+    // Field List<GameObject>
+
+    // Field List<Single>
+    //Write(value.SpawnedObjectSpins);
+
+    // Field Single
+    Stream.WriteSingle(value.OverallSpinSpeed);
+}
+    */
 
     public void Write(LevelScene value)
 	{
