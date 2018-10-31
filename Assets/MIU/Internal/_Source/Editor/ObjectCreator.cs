@@ -206,7 +206,11 @@ public class ObjectCreator : Editor {
         RenderSettings.skybox = Resources.Load<Material>("Sky001");
 
         //Lightmap Core
+#if UNITY_2017_3_OR_NEWER
         LightmapEditorSettings.lightmapper = LightmapEditorSettings.Lightmapper.Enlighten;
+#else
+        LightmapEditorSettings.lightmapper = LightmapEditorSettings.Lightmapper.Radiosity;
+#endif
         Lightmapping.realtimeGI = false;
         Lightmapping.bakedGI = true;
         Lightmapping.giWorkflowMode = Lightmapping.GIWorkflowMode.OnDemand;
@@ -302,7 +306,7 @@ public class ObjectCreator : Editor {
         mi.Invoke(null, new object[] { gObj, texture });
     }
 
-    #region Lightmap Syste.Reflection Work
+#region Lightmap Syste.Reflection Work
 
     public static void SetFloat(string name, float val)
     {
@@ -337,5 +341,5 @@ public class ObjectCreator : Editor {
         var lightmapSettings = getLightmapSettingsMethod.Invoke(null, null) as Object;
         return new SerializedObject(lightmapSettings);
     }
-    #endregion
+#endregion
 }

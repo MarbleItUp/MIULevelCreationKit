@@ -3,6 +3,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/Assets/TestFiles*
 /Assets/AssetStoreTools*
 
 # Build info
