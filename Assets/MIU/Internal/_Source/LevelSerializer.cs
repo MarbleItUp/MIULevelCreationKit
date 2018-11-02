@@ -246,10 +246,13 @@ public class LevelSerializer
         // where to do it.
         //levelBits.Buffer = SerializerHelper.Compress(levelBits.Buffer);
 
-        Debug.Log("Serialized level, length = " + (levelBits.Position/1024) + "kb");
+        levelSize = levelBits.Position / 1024;
+        Debug.Log("Serialized level, length = " + levelSize + "kb");
         
         Profiler.EndSample();
     }
+
+    public static int levelSize;
 
     void SerializeLightmaps(ref SerializerHelper sh)
     {
