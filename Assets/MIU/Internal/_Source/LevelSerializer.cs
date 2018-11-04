@@ -267,6 +267,22 @@ public class LevelSerializer
             mask = lms.shadowMask;
         }
 
+        if (color != null && color.format != TextureFormat.DXT5)
+        {
+            failCause = "Lightmap Color Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            Selection.activeObject = color;
+        }
+        if (dir != null)
+        {
+            failCause = "Lightmap Directional Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            Selection.activeObject = dir;
+        }
+        if (mask != null && mask.format != TextureFormat.DXT5)
+        {
+            failCause = "Lightmap Shadow Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            Selection.activeObject = mask;
+        }
+
         SerializeTexture(ref sh, color);
         SerializeTexture(ref sh, dir);
         SerializeTexture(ref sh, mask);
