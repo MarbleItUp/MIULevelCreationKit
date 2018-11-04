@@ -8,45 +8,63 @@ using System.Reflection;
 
 public class MapExporter : EditorWindow
 {
-    int ChapterIndex;
-    int LevelIndex;
-
-    float timeDelay=0;
-    bool running;
+    public static bool hasResult = false;
 
     MapExporter()
     {
         titleContent = new GUIContent("Level Exporter");
     }
 
-    private void OnGUI()
+    public static void RunGUI()
     {
         var bigLabel = new GUIStyle(GUI.skin.label);
         bigLabel.fontStyle = FontStyle.Bold;
+        bigLabel.richText = true;
+
+        var smallLabel = new GUIStyle(GUI.skin.label);
+        smallLabel.wordWrap = true;
+        smallLabel.fontStyle = FontStyle.Normal;
 
         var bigButton = new GUIStyle(GUI.skin.button);
         bigButton.fontSize = bigLabel.fontSize;
 
         GUILayout.BeginVertical();
 
-        GUILayout.Label("Export Level", bigLabel);
+        GUILayout.Label("Level Export", bigLabel);
 
         GUILayout.BeginHorizontal();
-
         if (GUILayout.Button("Export", bigButton)) BakeScene();
-
         GUILayout.EndHorizontal();
 
+        if(hasResult)
+        {
+            GUILayout.BeginHorizontal();
+            bool failed = LevelSerializer.failCause != "";
+            string str = failed ? "<color=red>Failed</color>" : "<color=green>Success</color>";
+            GUILayout.Label("Status: " + str, bigLabel);
+            GUILayout.EndHorizontal();
+            if(failed)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(LevelSerializer.failCause, smallLabel);
+                GUILayout.EndHorizontal();
+            }
+            else
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Export Size: " + LevelSerializer.levelSize + "kb" , smallLabel);
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("File Location: " + ("Assets/" + LevelSerializer.GetCurrentSceneLevelId().Replace('_', ' ') + ".level"), smallLabel);
+                GUILayout.EndHorizontal();
+            }
+        }
         GUILayout.EndVertical();
     }
 
-    private void Stop()
+    public static void BakeScene()
     {
-        ChapterIndex = -1;
-    }
-
-    private void BakeScene()
-    {
+        hasResult = false;
         var assembly = Assembly.GetAssembly(typeof(SceneView));
         var type = assembly.GetType("UnityEditor.LogEntries");
         var method = type.GetMethod("Clear");
@@ -111,15 +129,8 @@ public class MapExporter : EditorWindow
         }
         else
             Debug.Log("<color=#ff3232>Export Failed:</color> " + LevelSerializer.failCause);
+        hasResult = true;
     }
 
     private Transform TestContainer = null;
-   
-
-    [MenuItem("Marble It Up/Level Export")]
-    static void Baker()
-    {
-        var w = GetWindow<MapExporter>();
-        w.ShowTab();
-    }
 }

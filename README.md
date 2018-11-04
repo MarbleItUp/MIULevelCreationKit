@@ -58,7 +58,7 @@ The final object is the Preview Camera which will provide the viewport in during
 
 Now that we’ve checked out the example scene we can try making our own version of Learning to Roll. First we create a new scene by pressing Ctrl+N or selecting *File > New Scene*.
 
-You should now have a blank scene with a *Directional Light*, and a *Main Camera*. First we want to set up the base scene so it’s ready to build upon. To do this, we want to set up the lighting parameters by selecting *Marble It Up > Set Up Lighting* from the top bar. You should be rewarded with a change in Skybox and a modified Scene Hierarchy where the Directional Light has been renamed to "Sun" and been moved into the Static/Lighting group. You can read more about picking a skybox in the Skybox section of this document.
+You should now have a blank scene with a *Directional Light*, and a *Main Camera*. First we want to set up the base scene so it’s ready to build upon. To do this, we want to open up the *Level Kit Window* which can be done by selecting *Marble It Up > Level Kit Window*. This will open up a new Unity Panel that should have a single button: *Setup Lighting*. Pressing this should reward you with a change in Skybox and a modified Scene Hierarchy where the Directional Light has been renamed to "Sun" and been moved into the Static/Lighting group. You can read more about picking a skybox in the Skybox section of this document.
 
 Let’s add the base Learning to Roll level mesh so we can get started with Static Meshes. In the Project Window, navigate to *Assets/MIU/Internal/Meshes* and drag the LearningToRoll mesh into the Scene Hierarchy. Your scene view should now look like this:
 
@@ -80,7 +80,7 @@ Now we have the visual meshes ready, but we need to make them physical! So, sele
 
 Now, any level requires a **Start Pad**, **End Pad**, and **Level Bounds** ... so lets make them!
 
-Creating special gameplay items like Pads, Power-ups, Bumpers, etc is easy. You can create them by selecting *Marble It Up > Create* and clicking on the object you want to make. Let’s make a Start Pad, an End Pad, and the Level Bounds which are all under the *Core* create grouping.
+Creating special gameplay items like Pads, Power-ups, Bumpers, etc is easy. Just open up the correct section in the *Level Kit Window* and click on button for the object you want to make. Let’s make a Start Pad, an End Pad, and the Level Bounds which are all under the *Core* section.
 
 Let’s move the Start and End pads into their correct locations at the start and end of the level by using the movement arrows in the Scene view. Make sure to turn on the icons in the Gizmos dropdown in the Scene View and increase the 3D Icon Size so that they are clearly visible.
 
@@ -96,11 +96,11 @@ Your resulting bounds should look something like this:
 
 We’re almost ready to export the level, but lets add a rock and a bumper first.
 
-You can add a bumper the same way you added the Start Pad, which is under *Marble It Up > Create > Gameplay > Bumper*, place it wherever you like on the level.
+You can add a bumper the same way you added the Start Pad, which is in Gameplay section of the *Level Kit Window*, place it wherever you like on the level.
 
 Now let’s also create a Rock. There are a number of different customizable objects available to add into your levels, they can be found in the Prefabs folder ( *MIU/Prefabs* ). To use one, just drag it into the Scene View or the Hierarchy. Let’s bring out RockFormation1.
 
-The difference between objects we create from the Marble It Up > Create menu and objects from the Prefabs folder is that Created objects can be moved/rotated/scaled but otherwise can’t be modified, whereas objects from the Prefabs folder can be modified and added to.
+The difference between objects we create from the Level Kit Window and objects from the Prefabs folder is that Created objects can be moved/rotated/scaled but otherwise can’t be modified, whereas objects from the Prefabs folder can be modified and added to.
 
 For example, let’s take our RockFormation1 that we brought into the scene and add *another* rock to it, creating an entirely new formation! Just copy and paste Rock1 inside the formation and then move that around to wherever you want.
 

@@ -194,13 +194,16 @@ public class LevelSerializer
         var sh = new SerializerHelper();
         sh.Stream = new ByteStream();
 
-        // Write header info - Marble it Up Level v2
+        // Write header info - Marble it Up Level v5
         // v1 - initial format
         // v2 - added lightmaps
+        // v3 - added level timing
+        // v4 - added map hash
+        // v5 - added map author
         sh.Stream.WriteByte((byte)'m');
         sh.Stream.WriteByte((byte)'u');
         sh.Stream.WriteByte((byte)'l');
-        sh.Stream.WriteByte((byte)'4');
+        sh.Stream.WriteByte((byte)'5');
 
         if (GameObject.Find("StartPad") == null)
         {
@@ -225,6 +228,11 @@ public class LevelSerializer
         sh.Stream.WriteSingle(gold);
         sh.Stream.WriteSingle(diamond);
 
+        string author = "";
+        if (lt != null)
+            author = lt.Author;
+        sh.Stream.WriteString(author);
+
         var hashStream = new SerializerHelper();
         hashStream.Write(scene);
         string hash = "000-" + UnityEngine.Random.Range(0, int.MaxValue);
@@ -246,10 +254,13 @@ public class LevelSerializer
         // where to do it.
         //levelBits.Buffer = SerializerHelper.Compress(levelBits.Buffer);
 
-        Debug.Log("Serialized level, length = " + (levelBits.Position/1024) + "kb");
+        levelSize = levelBits.Position / 1024;
+        Debug.Log("Serialized level, length = " + levelSize + "kb");
         
         Profiler.EndSample();
     }
+
+    public static int levelSize;
 
     void SerializeLightmaps(ref SerializerHelper sh)
     {
@@ -262,6 +273,22 @@ public class LevelSerializer
             color= lms.lightmapColor;
             dir = lms.lightmapDir;
             mask = lms.shadowMask;
+        }
+
+        if (color != null && color.format != TextureFormat.DXT5)
+        {
+            failCause = "Lightmap Color Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            Selection.activeObject = color;
+        }
+        if (dir != null)
+        {
+            failCause = "Lightmap Directional Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            Selection.activeObject = dir;
+        }
+        if (mask != null && mask.format != TextureFormat.DXT5)
+        {
+            failCause = "Lightmap Shadow Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            Selection.activeObject = mask;
         }
 
         SerializeTexture(ref sh, color);
@@ -573,7 +600,14 @@ public class LevelSerializer
         if (go.GetComponent<CheckpointController>() != null || go.tag == "LevelBounds")
             return true;
 
-        if (go.transform.childCount == 0 && go.GetComponents<Component>().Length < 2)
+        int validChildren = 0;
+        for(int i=0; i<go.transform.childCount; i++)
+        {
+            if (go.transform.GetChild(i).GetComponent<IgnoreObject>() == null)
+                validChildren++;
+        }
+
+        if (validChildren == 0 && go.GetComponents<Component>().Length < 2)
         {
             lo.prefabItem = GetPrefabID(go.name, null);
             return true;
