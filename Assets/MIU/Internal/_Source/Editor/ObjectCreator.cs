@@ -94,6 +94,7 @@ public class ObjectCreator : EditorWindow
         { if (FoldoutButton("Level Timing", 1)) CreateTimingObj(); }
         else
             FoldoutLabel("<color=green>Level Timing in Scene.</color>", 1);
+        GUILayout.Space(5);
     }
 
     void GameplayUI()
@@ -114,6 +115,7 @@ public class ObjectCreator : EditorWindow
         GUILayout.Space(2);
         if (FoldoutButton("Bumper", 1)) CreateBumper();
         if (FoldoutButton("Checkpoint", 1)) CreateCheckpoint();
+        GUILayout.Space(5);
     }
 
     bool showSigns;
@@ -135,8 +137,9 @@ public class ObjectCreator : EditorWindow
             if (FoldoutButton("Right Turn", 2)) CreateSignRight();
             if (FoldoutButton("Continuous Turn", 2)) CreateSignContinuous();
         }
-        GUILayout.Space(5);
+        GUILayout.Space(1);
         FoldoutLabel("More FX Objects can be found in Assets/MIU/Prefabs/FX folder.", 1);
+        GUILayout.Space(5);
     }
 
     void MiscUI()
@@ -174,6 +177,7 @@ public class ObjectCreator : EditorWindow
 
         smallLabel = new GUIStyle(GUI.skin.label);
         smallLabel.fontStyle = FontStyle.Normal;
+        smallLabel.wordWrap = true;
         smallLabel.richText = true;
 
         bigButton = new GUIStyle(GUI.skin.button);
