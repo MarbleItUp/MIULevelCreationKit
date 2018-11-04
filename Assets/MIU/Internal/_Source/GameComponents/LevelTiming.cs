@@ -9,6 +9,7 @@ public class LevelTiming : MonoBehaviour {
     public float DiamondTime = 15;
     public float GoldTime = 30;
     public float SilverTime = 60;
+    public string Author = "";
 
     public string GetTimingString()
     {

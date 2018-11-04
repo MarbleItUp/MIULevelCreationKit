@@ -194,13 +194,16 @@ public class LevelSerializer
         var sh = new SerializerHelper();
         sh.Stream = new ByteStream();
 
-        // Write header info - Marble it Up Level v2
+        // Write header info - Marble it Up Level v5
         // v1 - initial format
         // v2 - added lightmaps
+        // v3 - added level timing
+        // v4 - added map hash
+        // v5 - added map author
         sh.Stream.WriteByte((byte)'m');
         sh.Stream.WriteByte((byte)'u');
         sh.Stream.WriteByte((byte)'l');
-        sh.Stream.WriteByte((byte)'4');
+        sh.Stream.WriteByte((byte)'5');
 
         if (GameObject.Find("StartPad") == null)
         {
@@ -224,6 +227,11 @@ public class LevelSerializer
         sh.Stream.WriteSingle(silver);
         sh.Stream.WriteSingle(gold);
         sh.Stream.WriteSingle(diamond);
+
+        string author = "";
+        if (lt != null)
+            author = lt.Author;
+        sh.Stream.WriteString(author);
 
         var hashStream = new SerializerHelper();
         hashStream.Write(scene);
