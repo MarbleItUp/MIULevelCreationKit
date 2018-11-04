@@ -8,14 +8,14 @@ using System.Reflection;
 
 public class MapExporter : EditorWindow
 {
-    bool hasResult = false;
+    public static bool hasResult = false;
 
     MapExporter()
     {
         titleContent = new GUIContent("Level Exporter");
     }
 
-    private void OnGUI()
+    public static void RunGUI()
     {
         var bigLabel = new GUIStyle(GUI.skin.label);
         bigLabel.fontStyle = FontStyle.Bold;
@@ -29,7 +29,7 @@ public class MapExporter : EditorWindow
 
         GUILayout.BeginVertical();
 
-        GUILayout.Label("Export Level", bigLabel);
+        GUILayout.Label("Level Export", bigLabel);
 
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Export", bigButton)) BakeScene();
@@ -61,7 +61,7 @@ public class MapExporter : EditorWindow
         GUILayout.EndVertical();
     }
 
-    private void BakeScene()
+    public static void BakeScene()
     {
         hasResult = false;
         var assembly = Assembly.GetAssembly(typeof(SceneView));
@@ -132,12 +132,4 @@ public class MapExporter : EditorWindow
     }
 
     private Transform TestContainer = null;
-   
-
-    [MenuItem("Marble It Up/Level Export")]
-    static void Baker()
-    {
-        var w = GetWindow<MapExporter>();
-        w.ShowTab();
-    }
 }

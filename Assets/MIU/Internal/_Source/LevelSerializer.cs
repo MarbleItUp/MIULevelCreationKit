@@ -576,7 +576,14 @@ public class LevelSerializer
         if (go.GetComponent<CheckpointController>() != null || go.tag == "LevelBounds")
             return true;
 
-        if (go.transform.childCount == 0 && go.GetComponents<Component>().Length < 2)
+        int validChildren = 0;
+        for(int i=0; i<go.transform.childCount; i++)
+        {
+            if (go.transform.GetChild(i).GetComponent<IgnoreObject>() == null)
+                validChildren++;
+        }
+
+        if (validChildren == 0 && go.GetComponents<Component>().Length < 2)
         {
             lo.prefabItem = GetPrefabID(go.name, null);
             return true;

@@ -6,41 +6,221 @@ using UnityEditor;
 using System.Reflection;
 using Object = UnityEngine.Object;
 
-public class ObjectCreator : Editor {
+public class ObjectCreator : EditorWindow
+{
+    #region GUI
+
+    GUIStyle bigLabel;
+    GUIStyle smallLabel;
+    GUIStyle bigButton;
+    GUIStyle smallButton;
+    bool showCore;
+    bool gameplay;
+    bool showFX;
+    bool showMisc;
+
+    private void OnGUI()
+    {
+        SetupStyle();
+
+        //UI Content
+        GUILayout.BeginVertical();
+        if(BaseSetupUI())
+        {
+            GUILayout.Label("Scene Objects", bigLabel);
+
+            showCore = EditorGUILayout.Foldout(showCore, "Core");
+            if (showCore)
+                CoreUI();
+
+            gameplay = EditorGUILayout.Foldout(gameplay, "Gameplay");
+            if (gameplay)
+                GameplayUI();
+
+            showFX = EditorGUILayout.Foldout(showFX, "FX");
+            if (showFX)
+                FXUI();
+
+            showMisc = EditorGUILayout.Foldout(showMisc, "Misc");
+            if (showMisc)
+                MiscUI();
+
+
+            //Export Section
+            EditorGUILayout.Space();
+            MapExporter.RunGUI();
+        }
+
+
+        GUILayout.EndVertical();
+    }
+
+    bool BaseSetupUI()
+    {
+        bool lightSet = true;
+        if (Lightmapping.giWorkflowMode != Lightmapping.GIWorkflowMode.OnDemand || LightmapSettings.lightmapsMode != LightmapsMode.NonDirectional
+        || Lightmapping.realtimeGI != false || Lightmapping.bakedGI != true)
+            lightSet = false;
+        bool readyForParts = lightSet;
+
+        if(!readyForParts)
+        {
+            GUILayout.Label("Scene Setup", bigLabel);
+            if (!lightSet) { if (GUILayout.Button("Setup Lighting", bigButton)) SetupLighting(); }
+        }
+
+        return readyForParts;
+    }
+
+    void CoreUI()
+    {
+        GUILayout.Space(5);
+        if (MapComponents.FindFixed("StartPad") == null)
+        { if (FoldoutButton("Start Pad", 1)) CreateStartPad(); }
+        else
+            FoldoutLabel("<color=green>Start Pad in Scene.</color>", 1);
+
+        if (MapComponents.FindFixed("EndPad") == null)
+        { if (FoldoutButton("End Pad", 1)) CreateEndPad(); }
+        else
+            FoldoutLabel("<color=green>End Pad in Scene.</color>", 1);
+
+        if (MapComponents.FindFixed("LevelBounds") == null)
+        { if (FoldoutButton("Level Bounds", 1)) CreateLvlBounds(); }
+        else
+            FoldoutLabel("<color=green>Level Bounds in Scene.</color>", 1);
+
+        if (FindObjectOfType<LevelTiming>() == null)
+        { if (FoldoutButton("Level Timing", 1)) CreateTimingObj(); }
+        else
+            FoldoutLabel("<color=green>Level Timing in Scene.</color>", 1);
+    }
+
+    void GameplayUI()
+    {
+        int gemCount = MapComponents.GetNumOf("Gem");
+        FoldoutLabel("Pickups", 1);
+        GUILayout.Space(2);
+        if (FoldoutButton("Gem", 1)) CreateGem();
+        if (FoldoutButton("Super Jump", 1)) CreateSJ();
+        if (FoldoutButton("Super Speed", 1)) CreateSS();
+        if (FoldoutButton("Feather Fall", 1)) CreateFF();
+        if (FoldoutButton("Time Travel", 1)) CreateTT();
+        if (FoldoutButton("Trophy", 1)) CreateTrophy();
+        GUILayout.Space(2);
+        FoldoutLabel("Gems: <color=#0085ff>" + gemCount + "</color>", 1);
+        GUILayout.Space(10);
+        FoldoutLabel("Interactive", 1);
+        GUILayout.Space(2);
+        if (FoldoutButton("Bumper", 1)) CreateBumper();
+        if (FoldoutButton("Checkpoint", 1)) CreateCheckpoint();
+    }
+
+    bool showSigns;
+    void FXUI()
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(1 * 20);
+        showSigns = EditorGUILayout.Foldout(showSigns, "Signs");
+        GUILayout.EndHorizontal();
+        if (showSigns)
+        {
+            if (FoldoutButton("Curvy", 2)) CreateSignCurve();
+            if (FoldoutButton("Dropoff", 2)) CreateSignDrop();
+            if (FoldoutButton("Fork", 2)) CreateSignFork();
+            if (FoldoutButton("Hazard", 2)) CreateSignHazard();
+            if (FoldoutButton("Icy", 2)) CreateSignIce();
+            if (FoldoutButton("Steep", 2)) CreateSignSteep();
+            if (FoldoutButton("Left Turn", 2)) CreateSignLeft();
+            if (FoldoutButton("Right Turn", 2)) CreateSignRight();
+            if (FoldoutButton("Continuous Turn", 2)) CreateSignContinuous();
+        }
+        GUILayout.Space(5);
+        FoldoutLabel("More FX Objects can be found in Assets/MIU/Prefabs/FX folder.", 1);
+    }
+
+    void MiscUI()
+    {
+        if (FoldoutButton("Marble Size Ref", 1)) CreateMableRef();
+    }
+
+    bool FoldoutButton(string label, int indentLevel)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(indentLevel*20);
+        bool val = GUILayout.Button(label, smallButton);
+        GUILayout.EndHorizontal();
+        return val;
+    }
+
+    void FoldoutLabel(string label, int indentLevel)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(indentLevel*20);
+        GUILayout.Label(label, smallLabel);
+        GUILayout.EndHorizontal();
+    }
+
+    ObjectCreator()
+    {
+        titleContent = new GUIContent("MIU Level Kit");
+    }
+
+    void SetupStyle()
+    {
+        bigLabel = new GUIStyle(GUI.skin.label);
+        bigLabel.fontStyle = FontStyle.Bold;
+        bigLabel.richText = true;
+
+        smallLabel = new GUIStyle(GUI.skin.label);
+        smallLabel.fontStyle = FontStyle.Normal;
+        smallLabel.richText = true;
+
+        bigButton = new GUIStyle(GUI.skin.button);
+        bigButton.fontSize = bigLabel.fontSize;
+
+        smallButton = new GUIStyle(GUI.skin.button);
+        smallButton.fontSize = bigLabel.fontSize;
+        //smallButton.fixedWidth = 125;
+        
+    }
+
+    [MenuItem("Marble It Up/Level Kit Window")]
+    static void Baker()
+    {
+        var w = GetWindow<ObjectCreator>();
+        w.ShowTab();
+    }
+
+    #endregion
 
     #region Pickups
 
-    [MenuItem("Marble It Up/Create/Pickups/Gem")]
     static void CreateGem()
     {
-        Create("Gem", "gem_icon", "Gameplay");
+        CreateFromResource("Gem", "Gameplay");
     }
 
-    [MenuItem("Marble It Up/Create/Pickups/Super Jump")]
     static void CreateSJ()
     {
         Create("Jump", "sjump_icon", "Gameplay");
     }
 
-    [MenuItem("Marble It Up/Create/Pickups/Featherfall")]
     static void CreateFF()
     {
         Create("Featherfall", "feather_icon", "Gameplay");
     }
 
-    [MenuItem("Marble It Up/Create/Pickups/Boost")]
     static void CreateSS()
     {
         Create("Boost", "boost_icon", "Gameplay");
     }
 
-    [MenuItem("Marble It Up/Create/Pickups/Time Travel")]
     static void CreateTT()
     {
         Create("TimeTravel", "ttravel_icon", "Gameplay");
     }
 
-    [MenuItem("Marble It Up/Create/Pickups/Trophy")]
     static void CreateTrophy()
     {
         Create("Easter Egg", "trophy_icon", "Gameplay", true);
@@ -50,7 +230,6 @@ public class ObjectCreator : Editor {
 
     #region Core
 
-    [MenuItem("Marble It Up/Create/Core/Level Bounds")]
     static void CreateLvlBounds()
     {
         GameObject o = Create("LevelBounds", "", "Gameplay", true);
@@ -63,19 +242,16 @@ public class ObjectCreator : Editor {
         }
     }
 
-    [MenuItem("Marble It Up/Create/Core/Start Pad")]
     static void CreateStartPad()
     {
-        Create("StartPad", "startpad_icon", "Gameplay", true);
+        CreateFromResource("StartPad", "Gameplay", true);
     }
 
-    [MenuItem("Marble It Up/Create/Core/End Pad")]
     static void CreateEndPad()
     {
-        Create("EndPad", "endpad_icon", "Gameplay", true);
+        CreateFromResource("EndPad", "Gameplay", true);
     }
 
-    [MenuItem("Marble It Up/Create/Core/Level Timing")]
     static void CreateTimingObj()
     {
         GameObject o = Create("LevelTiming", "", "", true);
@@ -89,13 +265,10 @@ public class ObjectCreator : Editor {
 
     #region Gameplay
 
-    [MenuItem("Marble It Up/Create/Gameplay/Bumper")]
     static void CreateBumper()
     {
-        Create("Bumper", "bumper_icon", "Gameplay");
+        CreateFromResource("Bumper", "Gameplay");
     }
-
-    [MenuItem("Marble It Up/Create/Gameplay/Checkpoint")]
     static void CreateCheckpoint()
     {
         GameObject o = Create("CheckPoint", "checkpoint_icon", "Gameplay");
@@ -110,61 +283,51 @@ public class ObjectCreator : Editor {
 
     #region Visual
 
-    [MenuItem("Marble It Up/Create/Signs/Curvy")]
     static void CreateSignCurve()
     {
         Create("Sign_Curvy", "sign_curve", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Dropoff")]
     static void CreateSignDrop()
     {
         Create("Sign_DropOff", "sign_drop", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Fork")]
     static void CreateSignFork()
     {
         Create("Sign_Fork", "sign_fork", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Hazard")]
     static void CreateSignHazard()
     {
         Create("Sign_Hazard", "sign_hazard", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Icey")]
     static void CreateSignIce()
     {
         Create("Sign_Icy", "sign_ice", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Steep")]
     static void CreateSignSteep()
     {
         Create("Sign_Steep", "sign_steep", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Left Turn")]
     static void CreateSignLeft()
     {
         Create("Sign_TurnLeft", "sign_left", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Right Turn")]
     static void CreateSignRight()
     {
         Create("Sign_TurnRight", "sign_right", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/Signs/Continuous Turn")]
     static void CreateSignContinuous()
     {
         Create("Sign_ContinuousTurn", "sign_continuous", "Skybox");
     }
 
-    [MenuItem("Marble It Up/Create/FX/Big Crystal")]
     static void CreateBigCrystal()
     {
         Create("GiantCrystal", "bigcrystal_icon", "Skybox");
@@ -181,7 +344,6 @@ public class ObjectCreator : Editor {
 
     #endregion
 
-    [MenuItem("Marble It Up/Create/Util/Marble Size Reference")]
     static void CreateMableRef()
     {
         GameObject o = GameObject.Find("marble_size_reference");
@@ -197,7 +359,6 @@ public class ObjectCreator : Editor {
         Selection.activeGameObject = o;
     }
 
-    [MenuItem("Marble It Up/Set Up Lighting")]
     static void SetupLighting()
     {
         //Sky
@@ -269,7 +430,7 @@ public class ObjectCreator : Editor {
     {
         if(unique)
         {
-            GameObject o = GameObject.Find(itemName);
+            GameObject o = MapComponents.FindFixed(itemName);
             if(o != null)
             {
                 Debug.LogError(itemName + " already exists!");
@@ -279,6 +440,7 @@ public class ObjectCreator : Editor {
         }
 
         GameObject obj = new GameObject(itemName);
+        obj.transform.position = GetSpawnPos();
         SetIcon(obj, icon);
         if(holderName != null && holderName.Length > 0)
         {
@@ -290,6 +452,47 @@ public class ObjectCreator : Editor {
         }
         Selection.activeGameObject = obj;
         return obj;
+    }
+
+    static GameObject CreateFromResource(string itemName, string holderName, bool unique = false)
+    {
+        if (unique)
+        {
+            GameObject o = GameObject.Find(MapComponents.FixName(itemName));
+            if (o != null)
+            {
+                Debug.LogError(itemName + " already exists!");
+                Selection.activeGameObject = o;
+                return null;
+            }
+        }
+
+        GameObject obj = Instantiate(Resources.Load<GameObject>(itemName));
+        obj.name = itemName;
+        obj.transform.position = GetSpawnPos();
+        if (holderName != null && holderName.Length > 0)
+        {
+            GameObject holder = GameObject.Find(holderName);
+            if (holder == null)
+                holder = new GameObject(holderName);
+
+            obj.transform.SetParent(holder.transform);
+        }
+        Selection.activeGameObject = obj;
+        return obj;
+    }
+
+    static Vector3 GetSpawnPos()
+    {
+        Ray r = new Ray();
+        r.direction = SceneView.lastActiveSceneView.camera.transform.forward;
+        r.origin = SceneView.lastActiveSceneView.camera.transform.position;
+        RaycastHit hit;
+        if(Physics.Raycast(r, out hit, 100))
+        {
+            return hit.point;
+        }
+        return SceneView.lastActiveSceneView.camera.transform.position + (SceneView.lastActiveSceneView.camera.transform.forward * 2f);
     }
 
     static void SetIcon(GameObject o, string icon)
@@ -306,7 +509,7 @@ public class ObjectCreator : Editor {
         mi.Invoke(null, new object[] { gObj, texture });
     }
 
-#region Lightmap Syste.Reflection Work
+    #region Lightmap Syste.Reflection Work
 
     public static void SetFloat(string name, float val)
     {

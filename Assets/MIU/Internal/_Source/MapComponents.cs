@@ -76,6 +76,17 @@ public class MapComponents : ScriptableObject {
         return num;
     }
 
+    public static GameObject FindFixed(string objectName)
+    {
+        GameObject[] obj = FindObjectsOfType<GameObject>();
+        foreach (GameObject o in obj)
+        {
+            if (FixName(o.name) == objectName)
+                return o;
+        }
+        return null;
+    }
+
     public static string FixName(string name)
     {
         Regex regex = new Regex("\\ \\(\\d*\\)");
