@@ -340,7 +340,6 @@ public class ObjectCreator : EditorWindow
 
     #region Multiplayer
 
-    [MenuItem("Marble It Up/Create/Multiplayer/Spawn Point")]
     static void CreateSpawnPoint()
     {
         Create("SpawnPoint", "mpspawn_icon", "Multiplayer", true);
