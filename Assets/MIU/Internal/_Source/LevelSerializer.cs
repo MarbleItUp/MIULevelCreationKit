@@ -275,9 +275,9 @@ public class LevelSerializer
             mask = lms.shadowMask;
         }
 
-        if (color != null && !ValidFormat(color.format))
+        if (color != null && color.format != TextureFormat.DXT5)
         {
-            failCause = "Lightmap Color Texture not crunched, please set <b>Texture Type - Default</b>, <b>Compression - Normal</b>, and turn on <b>Use Crunch Compression</b> to reduce file size";
+            failCause = "Lightmap Color Texture not compressed, please set <b>Texture Type - Lightmap</b>, <b>Compression - Normal</b> to reduce file size";
             Debug.Log("Color Format: " + color.format);
             Selection.activeObject = color;
         }
@@ -286,9 +286,9 @@ public class LevelSerializer
             failCause = "Lightmap Directional Texture not crunched, please set <b>Texture Type - Default</b>, <b>Compression - Normal</b>, and turn on <b>Use Crunch Compression</b> to reduce file size";
             Selection.activeObject = dir;
         }
-        if (mask != null && !ValidFormat(mask.format))
+        if (mask != null && mask.format != TextureFormat.DXT1)
         {
-            failCause = "Lightmap Shadow Texture not crunched, please set <b>Texture Type - Default</b>, <b>Compression - Normal</b>, and turn on <b>Use Crunch Compression</b> to reduce file size.";
+            failCause = "Lightmap Shadow Texture not crunched, please set <b>Texture Type - Default</b>, <b>Alpha Source - None</b>, and <b>Compression - Normal</b> to reduce file size.";
             Debug.Log("Shadow Format: " + mask.format);
             Selection.activeObject = mask;
         }
