@@ -24,6 +24,7 @@ public class MapExporter : EditorWindow
         var smallLabel = new GUIStyle(GUI.skin.label);
         smallLabel.wordWrap = true;
         smallLabel.fontStyle = FontStyle.Normal;
+        smallLabel.richText = true;
 
         var bigButton = new GUIStyle(GUI.skin.button);
         bigButton.fontSize = bigLabel.fontSize;
