@@ -1,5 +1,11 @@
 ## Version Info
 
+###1.16 - Lightmap Format & More Blocks
+* Added new misc tile object prefabs
+* Level Bounds now auto configure
+* Added "Recalculate Level Bounds" button
+* Updated lightmap compression requirements
+
 ###1.15 - Level Kit UI v2 and Building Blocks
 * Updated file structure for easier use
 * Added mover tile materials

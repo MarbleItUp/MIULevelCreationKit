@@ -277,23 +277,30 @@ public class LevelSerializer
 
         if (color != null && color.format != TextureFormat.DXT5)
         {
-            failCause = "Lightmap Color Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            failCause = "Lightmap Color Texture not compressed, please set <b>Texture Type - Lightmap</b>, <b>Compression - Normal</b> to reduce file size";
+            Debug.Log("Color Format: " + color.format);
             Selection.activeObject = color;
         }
-        if (dir != null)
+        if (dir != null && !ValidFormat(dir.format))
         {
-            failCause = "Lightmap Directional Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            failCause = "Lightmap Directional Texture not Compressed, please set <b>Texture Type - Default</b>, <b>Compression - Normal</b>, and turn on <b>Use Crunch Compression</b> to reduce file size";
             Selection.activeObject = dir;
         }
-        if (mask != null && mask.format != TextureFormat.DXT5)
+        if (mask != null && mask.format != TextureFormat.DXT1)
         {
-            failCause = "Lightmap Shadow Texture not compressed, please set to <b>Compression - Normal</b> to reduce file size";
+            failCause = "Lightmap Shadow Texture not Compressed, please set <b>Texture Type - Default</b>, <b>Alpha Source - None</b>, and <b>Compression - Normal</b> to reduce file size.";
+            Debug.Log("Shadow Format: " + mask.format);
             Selection.activeObject = mask;
         }
 
         SerializeTexture(ref sh, color);
         SerializeTexture(ref sh, dir);
         SerializeTexture(ref sh, mask);
+    }
+
+    bool ValidFormat(TextureFormat format)
+    {
+        return true;// format == TextureFormat.DXT1Crunched || format == TextureFormat.BC6H || format == TextureFormat.DXT5Crunched;
     }
 
     void SerializeTexture(ref SerializerHelper sh, Texture2D tex)

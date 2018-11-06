@@ -88,7 +88,9 @@ public class ObjectCreator : EditorWindow
         if (MapComponents.FindFixed("LevelBounds") == null)
         { if (FoldoutButton("Level Bounds", 1)) CreateLvlBounds(); }
         else
-            FoldoutLabel("<color=green>Level Bounds in Scene.</color>", 1);
+        {
+            if (FoldoutButton("Recalculate Level Bounds", 1)) UpdateLevelBounds();
+        }
 
         if (FindObjectOfType<LevelTiming>() == null)
         { if (FoldoutButton("Level Timing", 1)) CreateTimingObj(); }
@@ -244,6 +246,7 @@ public class ObjectCreator : EditorWindow
             bc.isTrigger = true;
             bc.size = new Vector3(150, 50, 150);
         }
+        UpdateLevelBounds();
     }
 
     static void CreateStartPad()
@@ -263,6 +266,25 @@ public class ObjectCreator : EditorWindow
         {
             LevelTiming bc = o.AddComponent<LevelTiming>();
         }
+    }
+
+    static void UpdateLevelBounds()
+    {
+        BoxCollider bc = null;
+        GameObject bounds = MapComponents.FindFixed("LevelBounds");
+        if (bounds != null)
+            bc = bounds.GetComponent<BoxCollider>();
+        if(bc != null)
+        {
+            Bounds b = new Bounds(Vector3.zero, Vector3.zero);
+            foreach (Collider r in FindObjectsOfType<MeshCollider>())
+            {
+                b.Encapsulate(r.bounds);
+            }
+            bounds.transform.position = b.center + (Vector3.up*10);
+            bc.center = Vector3.zero;
+            bc.size = b.size + new Vector3(10, 20, 10);
+        }       
     }
 
     #endregion
