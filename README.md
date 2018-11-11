@@ -180,10 +180,10 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 
 The level file format allows encoding of lightmaps to add fantastic visual fidelity to custom levels. With this feature comes the possibility for extremely large file sizes if not properly checked. Due to this the MIU Level Kit will enforce lightmap texture compression, ensuring that level files are as small as possible. Due to some engine limitations, this process can't be completely automated and will require some tweaking to get working correctly. This section is meant to explain what compression type the Level Kit requires and how to achieve it.
 
+If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (Lightmap needs transparency values). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are **DTX1 Compressed** for Lightmap and **DTX5 Compressed** for Shadowmap.
+
 ![image alt text](ReadmeImages/image_14.png)
 
-If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (shadowmap requires transparency information). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are _DTX1 Compressed_ for Lightmap and _DTX5 Compressed_ for Shadowmap.
-
-The image above shows how to achieve this texture compression setting in Unity 2017.3 but there may be differences in newer/older Unity versions. The important thing is to get DTX1/DTX5 Compressed format to show at the bottom of the texture preview image.
+The image above shows how to achieve this texture compression setting in Unity 2017.3 but there may be differences in newer/older Unity versions. The important thing is to get DTX1/DTX5 Compressed format to show at the bottom of the texture preview image. Without these compression settings your level will fail to export.
 
 An continually updated version of this document can be found [here](https://docs.google.com/document/d/1SNe0OEO1ypB6fZpyIw2OF8alsOiLxj-6cVrjkIkLBes).
