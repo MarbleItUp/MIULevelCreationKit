@@ -174,7 +174,6 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 *surface.lowfriction* - This is the Ice surface: anywhere this material is used will cause the marble to slide around. This surface is straightforward in use and does not need any special consideration.
 
 *surface.gravity* - This is the Gravity surface: anywhere this material is used will cause gravity to shift, such that the surface area touched is facing upward. The actual implementation of this surface gives some leniency to ‘touch’ and thus the area affected while in contact is larger than the actual contact area. For this reason it is highly suggested not to use this material on small objects with complex surfaces over a small area as gravity is likely to rapidly shift as the game tries to determine which way should be up based on many different points.
-
 <a name="lightmaps"/>
 # **Lightmap Settings**
 
