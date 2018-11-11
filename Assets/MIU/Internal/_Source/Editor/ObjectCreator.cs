@@ -117,6 +117,7 @@ public class ObjectCreator : EditorWindow
         GUILayout.Space(2);
         if (FoldoutButton("Bumper", 1)) CreateBumper();
         if (FoldoutButton("Checkpoint", 1)) CreateCheckpoint();
+        if (FoldoutButton("Tutorial", 1)) CreateTutorial();
         GUILayout.Space(5);
     }
 
@@ -209,27 +210,27 @@ public class ObjectCreator : EditorWindow
 
     static void CreateSJ()
     {
-        Create("Jump", "sjump_icon", "Gameplay");
+        CreateFromResource("Jump", "Gameplay");
     }
 
     static void CreateFF()
     {
-        Create("Featherfall", "feather_icon", "Gameplay");
+        CreateFromResource("Featherfall", "Gameplay");
     }
 
     static void CreateSS()
     {
-        Create("Boost", "boost_icon", "Gameplay");
+        CreateFromResource("Boost", "Gameplay");
     }
 
     static void CreateTT()
     {
-        Create("TimeTravel", "ttravel_icon", "Gameplay");
+        CreateFromResource("TimeTravel", "Gameplay");
     }
 
     static void CreateTrophy()
     {
-        Create("Easter Egg", "trophy_icon", "Gameplay", true);
+        CreateFromResource("Easter Egg", "Gameplay", true);
     }
 
     #endregion
@@ -295,10 +296,20 @@ public class ObjectCreator : EditorWindow
     {
         CreateFromResource("Bumper", "Gameplay");
     }
+
     static void CreateCheckpoint()
     {
         GameObject o = Create("CheckPoint", "checkpoint_icon", "Gameplay");
+        BoxCollider bc = o.AddComponent<BoxCollider>();
+        bc.isTrigger = true;
+        bc.size = new Vector3(5, 3, 5);
+        bc.center = new Vector3(0, 1.5f, 0);
+    }
 
+    static void CreateTutorial()
+    {
+        GameObject o = Create("Tutorial", "", "Gameplay");
+        o.AddComponent<TutorialMessage>();
         BoxCollider bc = o.AddComponent<BoxCollider>();
         bc.isTrigger = true;
         bc.size = new Vector3(5, 3, 5);

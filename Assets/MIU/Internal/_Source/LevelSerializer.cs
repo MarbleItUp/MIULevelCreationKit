@@ -277,21 +277,24 @@ public class LevelSerializer
 
         if (color != null && color.format != TextureFormat.DXT5)
         {
-            failCause = "Lightmap Color Texture not compressed, please set <b>Texture Type - Lightmap</b>, <b>Compression - Normal</b> to reduce file size";
+            failCause = "Lightmap Color Texture not DTX5 Compressed - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
             Debug.Log("Color Format: " + color.format);
             Selection.activeObject = color;
         }
+        /*
         if (dir != null && !ValidFormat(dir.format))
         {
             failCause = "Lightmap Directional Texture not Compressed, please set <b>Texture Type - Default</b>, <b>Compression - Normal</b>, and turn on <b>Use Crunch Compression</b> to reduce file size";
             Selection.activeObject = dir;
         }
+        */
         if (mask != null && mask.format != TextureFormat.DXT1)
         {
-            failCause = "Lightmap Shadow Texture not Compressed, please set <b>Texture Type - Default</b>, <b>Alpha Source - None</b>, and <b>Compression - Normal</b> to reduce file size.";
+            failCause = "Lightmap Shadow Texture not DTX1 Compressed - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
             Debug.Log("Shadow Format: " + mask.format);
             Selection.activeObject = mask;
         }
+
 
         SerializeTexture(ref sh, color);
         SerializeTexture(ref sh, dir);
@@ -321,7 +324,8 @@ public class LevelSerializer
     LevelObject SerializeGameObject(GameObject go, bool rejectStatic = true)
     {
         var lo = new LevelObject();
-        lo.name = go.name;
+        lo.name = MapComponents.FixName(go.name);
+        go.name = lo.name;
         SerializeTransform(go, lo);
 
         SerializeTutorial(go, lo);
@@ -505,7 +509,7 @@ public class LevelSerializer
 
     void SerializeMisc(GameObject go, LevelObject lo)
     {
-        if(go.GetComponent<CheckpointController>() != null)
+        if(go.name == "CheckPoint")
             lo.properties[LevelObject.CHECKPOINT] = true;
     }
 
@@ -604,8 +608,11 @@ public class LevelSerializer
             return false;
         }
 
-        if (go.GetComponent<CheckpointController>() != null || go.tag == "LevelBounds")
+        if (MapComponents.FixName(go.name) == "CheckPoint" || MapComponents.FixName(go.name) == "LevelBounds" || go.GetComponent<TutorialMessage>() != null)
+        {
+            lo.prefabItem = GetPrefabID(MapComponents.FixName(go.name), null);
             return true;
+        }
 
         int validChildren = 0;
         for(int i=0; i<go.transform.childCount; i++)
