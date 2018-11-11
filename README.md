@@ -1,7 +1,15 @@
-![image alt text](ReadmeImages/image_0.png)
-
 # **Marble It Up! Level Creation Kit**
 
+## Table of Contents
+
+- [Getting Started](#getstarted)
+- [Create Your First Level](#firstlevel)
+- [Skyboxes](#skyboxes)
+- [Moving Platforms](#movingplats)
+- [Special Surfaces](#surfaces)
+- [Lightmap Settings](#lightmaps)
+
+![image alt text](ReadmeImages/image_0.png)
 # **Overview**
 
 The *Marble It Up!* Level Creation Kit is a system that allows you to create and test new Marble It Up! levels. The kit comes in two parts: a Unity Package to help build .level files, and a Map Tester application to load and playtest your generated .level files.
@@ -14,7 +22,7 @@ Unity is needed to import the *MIU_LevelCreationKit.unitypackage* and export Uni
 Once you have Unity and your model creation system of choice, you’re ready to start building!
 
 Please also review the [Level Creation Kit EULA](https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/LICENSE.md) before continuing.
-
+<a name="getstarted"/>
 # **Importing the UnityPackage**
 
 Importing the Level Generation tools into Unity is easy!
@@ -54,6 +62,7 @@ The **Skybox** group contains all the non-interactive objects and effects such a
 
 The final object is the Preview Camera which will provide the viewport in during level select.
 
+<a name="firstlevel"/>
 # **Your First Custom Level**
 
 Now that we’ve checked out the example scene we can try making our own version of Learning to Roll. First we create a new scene by pressing Ctrl+N or selecting *File > New Scene*.
@@ -125,7 +134,7 @@ If everything works as intended you should be rewarded with a view of your custo
 ![image alt text](ReadmeImages/image_12.png)
 
 Just press Play to try it out!
-
+<a name="skyboxes"/>
 # **Skyboxes**
 
 While the Level Kit only comes with one template skybox, you can still use any of the skyboxes inside Marble It Up! for your custom map.
@@ -135,7 +144,7 @@ First, find Sky001 in the Resources folder, then Duplicate it (Select > Ctrl+D).
 The following page contains the Skies can be used by changing the name of the Skybox material:
 
 ![image alt text](ReadmeImages/image_13.png)
-
+<a name="movingplats"/>
 # **Moving Platforms**
 
 Moving Platforms can be created by editing the existing prefabs or by creating your own from scratch by adding an Elevator Mover component to a GameObject.
@@ -157,7 +166,7 @@ Moving Platforms can also serve as groups, holding other GameObjects inside them
 ## Basher
 
 The Basher prefab is a special Moving Platform used to knock mables off the map. To maintain consistency with other maps, the best practice is to only modify the Delta value of the Elevator Mover component and object’s position and rotation.
-
+<a name="surfaces"/>
 # **Special Surfaces**
 
 *Marble It Up!* has a number of physics surfaces that affect the marble’s movement. You can find them in the *MIU/Level Materials/Surfaces* folder.
@@ -165,5 +174,16 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 *surface.lowfriction* - This is the Ice surface: anywhere this material is used will cause the marble to slide around. This surface is straightforward in use and does not need any special consideration.
 
 *surface.gravity* - This is the Gravity surface: anywhere this material is used will cause gravity to shift, such that the surface area touched is facing upward. The actual implementation of this surface gives some leniency to ‘touch’ and thus the area affected while in contact is larger than the actual contact area. For this reason it is highly suggested not to use this material on small objects with complex surfaces over a small area as gravity is likely to rapidly shift as the game tries to determine which way should be up based on many different points.
+
+<a name="lightmaps"/>
+# **Lightmap Settings**
+
+The level file format allows encoding of lightmaps to add fantastic visual fidelity to custom levels. With this feature comes the possibility for extremely large file sizes if not properly checked. Due to this the MIU Level Kit will enforce lightmap texture compression, ensuring that level files are as small as possible. Due to some engine limitations, this process can't be completely automated and will require some tweaking to get working correctly. This section is meant to explain what compression type the Level Kit requires and how to achieve it.
+
+![image alt text](ReadmeImages/image_14.png)
+
+If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (shadowmap requires transparency information). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are _DTX1 Compressed_ for Lightmap and _DTX5 Compressed_ for Shadowmap.
+
+The image above shows how to achieve this texture compression setting in Unity 2017.3 but there may be differences in newer/older Unity versions. The important thing is to get DTX1/DTX5 Compressed format to show at the bottom of the texture preview image.
 
 An continually updated version of this document can be found [here](https://docs.google.com/document/d/1SNe0OEO1ypB6fZpyIw2OF8alsOiLxj-6cVrjkIkLBes).
