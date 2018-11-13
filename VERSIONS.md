@@ -1,5 +1,15 @@
 ## Version Info
 
+###1.18 - Lightmap Format & More Blocks
+* Added lightmap info to ReadMe
+* Removed unused materials
+* Added fix for level header
+* Replaced pickup icons with Meshes
+* Added more trim options
+* Fixed issue with trigger volumes (Checkpoint, Level Bounds, Tutorial)
+* Added Tutorial trigger to Level Kit Panel
+* Fixed problems with misnamed items exporting incorrectly
+
 ###1.16 - Lightmap Format & More Blocks
 * Added new misc tile object prefabs
 * Level Bounds now auto configure
