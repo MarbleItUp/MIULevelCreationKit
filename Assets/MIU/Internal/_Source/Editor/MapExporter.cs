@@ -129,7 +129,11 @@ public class MapExporter : EditorWindow
             Debug.Log("<color=green>Level Exported:</color> " + filePath);
         }
         else
+        {
+            if(LevelSerializer.failCause.Contains("Lightmap"))
+                    Application.OpenURL("https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps");
             Debug.Log("<color=#ff3232>Export Failed:</color> " + LevelSerializer.failCause);
+        }
         hasResult = true;
     }
 
