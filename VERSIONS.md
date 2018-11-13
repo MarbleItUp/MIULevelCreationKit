@@ -1,6 +1,6 @@
 ## Version Info
 
-### 1.18 - Lightmap Format & More Blocks
+### 1.18 - Reliability and Usability Improvements
 * Added lightmap info to ReadMe
 * Removed unused materials
 * Added fix for level header
