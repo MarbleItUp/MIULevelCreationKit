@@ -185,4 +185,10 @@ If your lightmap settings have been configured correctly, when you generate ligh
 
 The image above shows how to achieve this texture compression setting in Unity 2017.3 but there may be differences in newer/older Unity versions. The important thing is to get DTX1/DTX5 Compressed format to show at the bottom of the texture preview image. Without these compression settings your level will fail to export.
 
+## Lightmaps with Imported Models
+
+![image alt text](ReadmeImages/image_15.png)
+
+Lightmapping imported models from external 3D applications is supported, but it is important to ensure that *Generate Lightmap UVs* is checked in the model import settings to ensure smooth lightmapping data.
+
 An continually updated version of this document can be found [here](https://docs.google.com/document/d/1SNe0OEO1ypB6fZpyIw2OF8alsOiLxj-6cVrjkIkLBes).
