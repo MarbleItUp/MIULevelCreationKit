@@ -1,33 +1,34 @@
 fileFormatVersion: 2
-guid: af0bff9e5b5594104b00093d7e6d71fc
-timeCreated: 1541447346
-licenseType: Free
+guid: 8d2cb5f65c25c6340a56d5f70483ee99
+timeCreated: 1542218913
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Trim_End
+    100002: Platform_2_0
+    100004: Platform_2_1_1
+    100006: Platform_2_2
     400000: //RootNode
-    400002: Trim_End
-    2300000: Trim_End
-    3300000: Trim_End
-    4300000: Trim_End
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Edge_C
-    second: {fileID: 2100000, guid: 90dc41349b5104268ac223b7f18e173e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Trim_EndMat
-    second: {fileID: 2100000, guid: 0676a0be3cec0444f8b81c6e7cd3c564, type: 2}
+    400002: Platform_2_0
+    400004: Platform_2_1_1
+    400006: Platform_2_2
+    2100000: No Name
+    2300000: Platform_2_0
+    2300002: Platform_2_1_1
+    2300004: Platform_2_2
+    3300000: Platform_2_0
+    3300002: Platform_2_1_1
+    3300004: Platform_2_2
+    4300000: Platform_2_2
+    4300002: Platform_2_1_1
+    4300004: Platform_2_0
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -60,7 +61,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

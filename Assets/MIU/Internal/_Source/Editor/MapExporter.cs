@@ -116,7 +116,7 @@ public class MapExporter : EditorWindow
 
         if(LevelSerializer.failCause.Length == 0)
         {
-            string filePath = "Assets/" + LevelSerializer.GetCurrentSceneLevelId().Replace('_',' ') + ".level";
+            string filePath = "Assets/" + LevelSerializer.GetCurrentSceneLevelId() + ".level";
 
             FileStream file;
             if (!File.Exists(filePath))

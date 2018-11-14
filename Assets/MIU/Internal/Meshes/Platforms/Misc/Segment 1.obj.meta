@@ -36,6 +36,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Segment_1_0Mat
+    second: {fileID: 2100000, guid: ff922460e8b5c77439292021ece28eed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Segment_1_1Mat
+    second: {fileID: 2100000, guid: 44b75e534f0d4754fac887c444107b64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Segment_1_2Mat
+    second: {fileID: 2100000, guid: 7f947a73d18b856449fad1ccc32050d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Tile01-A
     second: {fileID: 2100000, guid: b20138592a5d44e8da46f68f696b0f35, type: 2}
   materials:
@@ -75,11 +90,13 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
