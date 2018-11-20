@@ -7,6 +7,7 @@
 * Fixed Cosmic Dust noise quality
 * Improved prefab pivot points
 * Improved lighting setup and detection code
+* Added a few more utility prefabs
 
 ### 1.18 - Reliability and Usability Improvements
 * Added lightmap info to ReadMe
