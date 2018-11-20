@@ -25,7 +25,7 @@ public class LevelSerializer
 
     public static string GetCurrentSceneLevelId()
     {
-        return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToLower().Replace(' ', '_');
+        return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
     }
 
     void OptimizeLevelGeometry(GameObject go)
@@ -121,7 +121,11 @@ public class LevelSerializer
 
         var scene = new LevelScene();
         scene.root.name = scene.name = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        scene.skyboxId = 11;
+        int id = 0;
+        int.TryParse(RenderSettings.skybox.name, out id);
+        if (id < 5)
+            id = 11;
+        scene.skyboxId = id; 
         
         // Grab a copy of the world...
         var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();

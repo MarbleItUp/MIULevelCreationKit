@@ -108,6 +108,13 @@ public class MapExporter : EditorWindow
         {
             LevelSerializer.failCause = "Level needs one Level Bounds!";
         }
+        else
+        {
+            GameObject bounds = MapComponents.FindFixed("LevelBounds");
+            BoxCollider box = bounds.GetComponent<BoxCollider>();
+            if (box.size.x > 4096 || box.size.y > 4096 || box.size.z > 4096)
+                LevelSerializer.failCause = "Map is too large! Ensure leve bounds dimensions are under 4096.";
+        }
 
         var serializer = new LevelSerializer();
         ByteStream levelBits = new ByteStream();
@@ -116,7 +123,7 @@ public class MapExporter : EditorWindow
 
         if(LevelSerializer.failCause.Length == 0)
         {
-            string filePath = "Assets/" + LevelSerializer.GetCurrentSceneLevelId().Replace('_',' ') + ".level";
+            string filePath = "Assets/" + LevelSerializer.GetCurrentSceneLevelId() + ".level";
 
             FileStream file;
             if (!File.Exists(filePath))

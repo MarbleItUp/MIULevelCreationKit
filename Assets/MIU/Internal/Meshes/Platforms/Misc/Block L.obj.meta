@@ -21,6 +21,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Block_L_0Mat
+    second: {fileID: 2100000, guid: e51e75a5bd5c19b41b01496fc973a191, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Block_L_1Mat
+    second: {fileID: 2100000, guid: c4bf4671b3312134f8506a524865aa5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Fill01-C_Local
     second: {fileID: 2100000, guid: c25dab10c18b2417496cdc5e20e47982, type: 2}
   - first:
@@ -65,11 +75,13 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

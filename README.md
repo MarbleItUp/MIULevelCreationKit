@@ -139,9 +139,9 @@ Just press Play to try it out!
 
 While the Level Kit only comes with one template skybox, you can still use any of the skyboxes inside Marble It Up! for your custom map.
 
-First, find Sky001 in the Resources folder, then Duplicate it (Select > Ctrl+D). All that is needed is to Rename your new Sky002 to the appropriate skybox name and set it to be the skybox at the top of the Lightmap Settings (*Window > Lighting > Settings*). The sky will look the same as Sky001 in the editor, but when you test the level file, it will use the correct sky material.
+First, find Sky001 in the Resources folder, then Duplicate it (Select > Ctrl+D). All that is needed is to Rename your new Sky002 to the appropriate skybox number (ie "25" instead of "Sky002") and set it to be the skybox at the top of the Lightmap Settings (*Window > Lighting > Settings*). The sky will look the same as Sky001 in the editor, but when you test the level file, it will use the correct sky material.
 
-The following page contains the Skies can be used by changing the name of the Skybox material:
+The following page contains the Skies that can be used by changing the name of the Skybox material:
 
 ![image alt text](ReadmeImages/image_13.png)
 <a name="movingplats"/>

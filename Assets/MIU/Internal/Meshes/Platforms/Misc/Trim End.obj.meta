@@ -18,6 +18,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Edge_C
     second: {fileID: 2100000, guid: 90dc41349b5104268ac223b7f18e173e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_EndMat
+    second: {fileID: 2100000, guid: 0676a0be3cec0444f8b81c6e7cd3c564, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -55,11 +60,13 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

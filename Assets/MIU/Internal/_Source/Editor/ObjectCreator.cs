@@ -58,8 +58,7 @@ public class ObjectCreator : EditorWindow
     bool BaseSetupUI()
     {
         bool lightSet = true;
-        if (Lightmapping.giWorkflowMode != Lightmapping.GIWorkflowMode.OnDemand || LightmapSettings.lightmapsMode != LightmapsMode.NonDirectional
-        || Lightmapping.realtimeGI != false || Lightmapping.bakedGI != true)
+        if (Lightmapping.giWorkflowMode != Lightmapping.GIWorkflowMode.OnDemand || Lightmapping.realtimeGI != false || Lightmapping.bakedGI != true)
             lightSet = false;
         bool readyForParts = lightSet;
 
@@ -242,7 +241,6 @@ public class ObjectCreator : EditorWindow
         GameObject o = Create("LevelBounds", "", "Gameplay", true);
         if (o != null)
         {
-            o.tag = "LevelBounds";
             BoxCollider bc = o.AddComponent<BoxCollider>();
             bc.isTrigger = true;
             bc.size = new Vector3(150, 50, 150);
@@ -400,7 +398,8 @@ public class ObjectCreator : EditorWindow
         //Sky
         RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
         RenderSettings.ambientIntensity = 1f;
-        RenderSettings.skybox = Resources.Load<Material>("Sky001");
+        if(RenderSettings.skybox == null)
+            RenderSettings.skybox = Resources.Load<Material>("Sky001");
 
         //Lightmap Core
 #if UNITY_2017_3_OR_NEWER
@@ -412,6 +411,7 @@ public class ObjectCreator : EditorWindow
         Lightmapping.bakedGI = true;
         Lightmapping.giWorkflowMode = Lightmapping.GIWorkflowMode.OnDemand;
         LightmapSettings.lightmapsMode = LightmapsMode.NonDirectional;
+        SetInt("m_LightmapEditorSettings.m_LightmapsBakeMode", 0);
         SetBool("m_LightmapEditorSettings.m_FinalGather", false);
         SetFloat("m_GISettings.m_AlbedoBoost", 2);
 

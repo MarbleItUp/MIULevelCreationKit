@@ -18,6 +18,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Trim003
     second: {fileID: 2100000, guid: 728adbe57779a46a2952f1eb2cccaac6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_End_CautionMat
+    second: {fileID: 2100000, guid: 0198d1fb84a5ce240a5a47c25bb692d8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -55,11 +60,13 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

@@ -26,6 +26,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Pyramid_Platform_2x2_0Mat
+    second: {fileID: 2100000, guid: e990a2a8b19f0534aa970141e3b5268c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pyramid_Platform_2x2_1Mat
+    second: {fileID: 2100000, guid: 6055830066c5a1a4dbf14d4ac7a24b3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pyramid_Platform_2x2_2Mat
+    second: {fileID: 2100000, guid: 8d511864b7f25fb44863e1c57e05ae90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Tile01-A
     second: {fileID: 2100000, guid: b20138592a5d44e8da46f68f696b0f35, type: 2}
   - first:
@@ -75,11 +90,13 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
