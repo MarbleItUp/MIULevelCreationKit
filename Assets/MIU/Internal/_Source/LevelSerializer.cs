@@ -301,7 +301,7 @@ public class LevelSerializer
 
 
         SerializeTexture(ref sh, color);
-        SerializeTexture(ref sh, dir);
+        SerializeTexture(ref sh, new Texture2D(2,2));
         SerializeTexture(ref sh, mask);
     }
 
