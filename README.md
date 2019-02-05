@@ -18,7 +18,13 @@ To get started creating custom *Marble It Up!* Levels you will need a few additi
 * Unity Editor (2017.2.1 or newer)
 * Pro Builder Unity Asset (free) or other 3D Modeling software
 
-Unity is needed to import the *MIU_LevelCreationKit.unitypackage* and export Unity Scenes into .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
+Unity is needed to import the *MIU_LevelCreationKit.unitypackage* and export Unity Scenes as .level files. [ProBuilder](https://assetstore.unity.com/packages/tools/modeling/probuilder-111418) or another 3D Modelling program is needed to create the actual map geometry and generate UV maps.
+
+In Unity 2018.1 and later, the latest version of ProBuilder can be installed from inside the editor.
+From the Unity menu bar, select *Window > Package Manager* and then find ProBuilder in the list and click Install.
+
+For Unity 2017.3 or older, you will have to use the older asset store version.
+
 Once you have Unity and your model creation system of choice, you’re ready to start building!
 
 Please also review the [Level Creation Kit EULA](https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/LICENSE.md) before continuing.
@@ -26,13 +32,13 @@ Please also review the [Level Creation Kit EULA](https://github.com/MarbleItUp/M
 # **Importing the UnityPackage**
 
 Importing the Level Generation tools into Unity is easy!
-From the top bar select *Assets > Import Package > Custom Package...*
+From the Unity menu bar select *Assets > Import Package > Custom Package...*
 
  ![image alt text](ReadmeImages/image_1.png)
 
 Then select  MIU_LevelCreationKit.unitypackage which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
 
-You should see a new option on the Unity toolbar called "Marble It Up".
+You should see a new option on the Unity menu bar called "Marble It Up".
 
 Now let’s make a few adjustments to the project so that what you see in the editor is as close as possible to what you’ll see in the game.
 First, select Edit > Project Settings > Quality and adjust the settings to made this:
@@ -119,7 +125,7 @@ Now your scene should look something similar to this:
 
 Let’s make sure to save our new scene (Ctrl+S or File > Save Scene) so that we can run our lightmapper.
 
-Select *Window > Lighting > Settings* from the top Unity bar. The Set Up Lighting command we ran at the start already configured our light settings, so all we need to do is hit Generate Lighting at the bottom right. This might take a few minutes depending on your computer, but at the end you should be rewarded with something like this:
+Select *Window > Lighting > Settings* from the Unity menu bar. The Set Up Lighting command we ran at the start already configured our light settings, so all we need to do is hit Generate Lighting at the bottom right. This might take a few minutes depending on your computer, but at the end you should be rewarded with something like this:
 
 ![image alt text](ReadmeImages/image_11.png)
 
