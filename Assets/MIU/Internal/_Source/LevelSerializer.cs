@@ -207,7 +207,7 @@ public class LevelSerializer
         sh.Stream.WriteByte((byte)'m');
         sh.Stream.WriteByte((byte)'u');
         sh.Stream.WriteByte((byte)'l');
-        sh.Stream.WriteByte((byte)'5');
+        sh.Stream.WriteByte((byte)'6');
 
         if (GameObject.Find("StartPad") == null)
         {
@@ -236,6 +236,12 @@ public class LevelSerializer
         if (lt != null)
             author = lt.Author;
         sh.Stream.WriteString(author);
+
+        PlayModifiers phym = GameObject.FindObjectOfType<PlayModifiers>();
+        string physParams = "";
+        if (phym != null)
+            physParams = phym.ToJSON();
+        sh.Stream.WriteString(physParams);
 
         var hashStream = new SerializerHelper();
         hashStream.Write(scene);
