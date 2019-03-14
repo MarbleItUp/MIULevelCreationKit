@@ -135,6 +135,11 @@ namespace MIU
         public const string MOVER_SPLINESPEED = MOVER + "_SplineSpeed";
         public const string MOVER_KEEPORIENTATION = MOVER + "_KeepOrientation";
 
+        public const string MOVER_ENABLEBOB = MOVER + "_EnableBob";
+        public const string MOVER_BOBOFFSET = MOVER + "_BobOffset";
+        public const string MOVER_BOBPERIOD = MOVER + "_BobPeriod";
+        public const string MOVER_BOBVECTOR = MOVER + "_BobVector";
+
         public const string SPLINE = "Spline";
         public const string SPLINE_COUNT = SPLINE + "_Count";
         public const string SPLINE_POSITION = SPLINE + "_Pos";

@@ -502,6 +502,14 @@ public class LevelSerializer
         p[LevelObject.MOVER_MOVEFIRST] = ev.moveFirst;
         p[LevelObject.MOVER_SPLINESPEED] = ev.splineSpeed;
         p[LevelObject.MOVER_KEEPORIENTATION] = ev.KeepOrientation;
+
+        p[LevelObject.MOVER_ENABLEBOB] = ev.EnableBob;
+        if (ev.EnableBob)
+        {
+            p[LevelObject.MOVER_BOBOFFSET] = ev.BobOffset;
+            p[LevelObject.MOVER_BOBPERIOD] = ev.BobPeriod;
+            lo.SetVector3(LevelObject.MOVER_BOBVECTOR, ev.BobVector);
+        }
         // Also the spline.
         /* -- No spline elevators for now
         if(ev.mode == ElevatorMover.Mode.Spline)
