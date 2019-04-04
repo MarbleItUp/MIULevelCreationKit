@@ -511,18 +511,15 @@ public class LevelSerializer
             lo.SetVector3(LevelObject.MOVER_BOBVECTOR, ev.BobVector);
         }
         // Also the spline.
-        /* -- No spline elevators for now
         if(ev.mode == ElevatorMover.Mode.Spline)
         {
             var splineGo = ev.splineGo;
-            var spline = splineGo.GetComponent<Battlehub.SplineEditor.Spline>();
             
             p[LevelObject.SPLINE] = true;
-            p[LevelObject.SPLINE_COUNT] = spline.transform.childCount;
+            p[LevelObject.SPLINE_COUNT] = splineGo.transform.childCount;
             for(var i=0; i<splineGo.transform.childCount; i++)
                 lo.SetVector3(LevelObject.SPLINE_POSITION + i, splineGo.transform.GetChild(i).transform.position);
         }
-        */
     }
 
     void SerializeMisc(GameObject go, LevelObject lo)
