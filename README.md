@@ -196,7 +196,8 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 *Lava.crush* - Instantly kills marble on contact. This is a sub-surface of the Crusher object in official levels but can be used as a normal surface as well.
 
 <a name="lightmaps"/>
-## **Lightmap Settings**
+# **Lightmap Settings**
+
 
 The level file format allows encoding of lightmaps to add fantastic visual fidelity to custom levels. With this feature comes the possibility for extremely large file sizes if not properly checked. Due to this the MIU Level Kit will enforce lightmap texture compression, ensuring that level files are as small as possible. Due to some engine limitations, this process can't be completely automated and will require some tweaking to get working correctly. This section is meant to explain what compression type the Level Kit requires and how to achieve it.
 
