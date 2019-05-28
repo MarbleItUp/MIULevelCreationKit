@@ -121,6 +121,10 @@ MonoBehaviour:
   pauseTime: 2
   moveTime: 4
   moveFirst: 0
-  splineSpeed: 0.2
+  EnableBob: 0
+  BobVector: {x: 0, y: 1, z: 0}
+  BobPeriod: 2.5
+  BobOffset: 0
+  splineSpeed: 25
   KeepOrientation: 0
   splineGo: {fileID: 0}

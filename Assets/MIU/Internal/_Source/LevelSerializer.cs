@@ -285,9 +285,9 @@ public class LevelSerializer
             mask = lms.shadowMask;
         }
 
-        if (color != null && color.format != TextureFormat.DXT5)
+        if (color != null && color.format != TextureFormat.DXT5Crunched)
         {
-            failCause = "Lightmap Color Texture not DTX5 Compressed - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
+            failCause = "Lightmap Color Texture not DTX5 Crunched - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
             Debug.Log("Color Format: " + color.format);
             Selection.activeObject = color;
         }
@@ -298,9 +298,9 @@ public class LevelSerializer
             Selection.activeObject = dir;
         }
         */
-        if (mask != null && mask.format != TextureFormat.DXT1)
+        if (mask != null && !(mask.format == TextureFormat.DXT1 || mask.format == TextureFormat.DXT1Crunched))
         {
-            failCause = "Lightmap Shadow Texture not DTX1 Compressed - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
+            failCause = "Lightmap Shadow Texture not DTX1 Crunched - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
             Debug.Log("Shadow Format: " + mask.format);
             Selection.activeObject = mask;
         }
