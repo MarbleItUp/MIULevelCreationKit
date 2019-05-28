@@ -36,7 +36,7 @@ From the Unity menu bar select *Assets > Import Package > Custom Package...*
 
  ![image alt text](ReadmeImages/image_1.png)
 
-Then select  MIU_LevelCreationKit.unitypackage which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
+Then select *MIU_LevelCreationKit.unitypackage* which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
 
 You should see a new option on the Unity menu bar called "Marble It Up".
 
@@ -165,9 +165,21 @@ The following properties can be modified to change how the platform behaves:
 - **Move Time** - Time taken per movement period
 - **Move First** - Move before pausing / pause before moving (at start)
 
+- **Enable Bob** - For rotating platforms, allows the platform to bob up at down at a set interval (sine curve)
+- **Bob Vector** - Distance vector for the bobbing motion
+- **Bob Period** - Duration of a single bob phase
+- **Bob Offset** - Time offset to allow multiple different cycle repeat times
+
 Moving Platforms must also have a Mesh Collider component to work properly due to how the physics system works. It is recommended, but not required, to also have Mesh Renderer and Mesh Filter components so that the moving platform physics bounds are visible in the game.
 
 Moving Platforms can also serve as groups, holding other GameObjects inside them such as gems, power-ups, and other collision meshes. Keep in mind that nesting many objects inside moving platforms will increase physics solve complexity and can reduce performance.
+
+## Spline Elevators
+
+By changing the Elevator Mover mode to *Spline* you can set up a bezier curve for the mover to follow. You can use the Spline Speed to determine how fast the mover traverses the spline and the Keep Orientation to prevent the mover from rotating during movement. The *Spline GO* section is where you will define your root spline object.
+
+![image alt text](ReadmeImages/image_16.png)
+To create a new spline, create an empty GameObject and add the Spline Drawer component to it. Then add at least 4 additional empty GameObjects as children of that SplineDrawer object, you should see a blue sphere appear. Move the child objects around and you will see a spline form, this will be the path that your elevator mover takes. Set the *Spline GO* to the Spline Drawer object and any exported map should have the Elevator Mover trace that spline path.
 
 ## Basher
 
@@ -180,12 +192,16 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 *surface.lowfriction* - This is the Ice surface: anywhere this material is used will cause the marble to slide around. This surface is straightforward in use and does not need any special consideration.
 
 *surface.gravity* - This is the Gravity surface: anywhere this material is used will cause gravity to shift, such that the surface area touched is facing upward. The actual implementation of this surface gives some leniency to ‘touch’ and thus the area affected while in contact is larger than the actual contact area. For this reason it is highly suggested not to use this material on small objects with complex surfaces over a small area as gravity is likely to rapidly shift as the game tries to determine which way should be up based on many different points.
+
+*Lava.crush* - Instantly kills marble on contact. This is a sub-surface of the Crusher object in official levels but can be used as a normal surface as well.
+
 <a name="lightmaps"/>
-# **Lightmap Settings**
+
+# Lightmap Settings
 
 The level file format allows encoding of lightmaps to add fantastic visual fidelity to custom levels. With this feature comes the possibility for extremely large file sizes if not properly checked. Due to this the MIU Level Kit will enforce lightmap texture compression, ensuring that level files are as small as possible. Due to some engine limitations, this process can't be completely automated and will require some tweaking to get working correctly. This section is meant to explain what compression type the Level Kit requires and how to achieve it.
 
-If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (Lightmap needs transparency values). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are **DTX1 Compressed** for Lightmap and **DTX5 Compressed** for Shadowmap.
+If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (Lightmap needs transparency values). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are **DTX5 Compressed** for Lightmap and **DTX1 Compressed** for Shadowmap, both with Crunch compression enabled.
 
 ![image alt text](ReadmeImages/image_14.png)
 
@@ -196,5 +212,3 @@ The image above shows how to achieve this texture compression setting in Unity 2
 ![image alt text](ReadmeImages/image_15.png)
 
 Lightmapping imported models from external 3D applications is supported, but it is important to ensure that *Generate Lightmap UVs* is checked in the model import settings to ensure smooth lightmapping data.
-
-An continually updated version of this document can be found [here](https://docs.google.com/document/d/1SNe0OEO1ypB6fZpyIw2OF8alsOiLxj-6cVrjkIkLBes).

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Lava.crush
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - <noninit>:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistantAlbedo:
+        m_Texture: {fileID: 2800000, guid: 20499cd1e31eed14da6ccf7eea687be4, type: 3}
+        m_Scale: {x: 0.25, y: 0.25}
+        m_Offset: {x: 0, y: 0}
+    - _DistantEmissive:
+        m_Texture: {fileID: 2800000, guid: e04c064ac68473b4c89016fb8e28b930, type: 3}
+        m_Scale: {x: 0.15, y: 0.15}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: bebf6693389f96046b8a7aeebdd405da, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: bebf6693389f96046b8a7aeebdd405da, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metal:
+        m_Texture: {fileID: 2800000, guid: cacc4ea1c522242449e1968011528b34, type: 3}
+        m_Scale: {x: 0.25, y: 0.25}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NearAlbedo:
+        m_Texture: {fileID: 2800000, guid: e685eb2a5107d644f8332c010c446862, type: 3}
+        m_Scale: {x: 0.25, y: 0.25}
+        m_Offset: {x: 0, y: 0}
+    - _NearEmissive:
+        m_Texture: {fileID: 2800000, guid: 8bb9dfcf5c88a794eb2f0d807cecd2b3, type: 3}
+        m_Scale: {x: 0.15, y: 0.15}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 33843ad0fd87c0646bc7b98fc8e2de23, type: 3}
+        m_Scale: {x: 0.15, y: 0.15}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - <noninit>: 1
+    - _BumpScale: 0.5
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _Distance: 10
+    - _DstBlend: 0
+    - _EmissiveStrength: 0.7
+    - _Falloff: 30
+    - _GlossMapScale: 0
+    - _Glossiness: 1
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Smoothness: 0.7
+    - _SmoothnessTextureChannel: 1
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - <noninit>: {r: 0.2711397, g: 0.234, b: 0.43382353, a: 1}
+    - _Color: {r: 1, g: 0.48235297, b: 0.039215688, a: 1}
+    - _EmissionColor: {r: 1, g: 0.63198304, b: 0.029411793, a: 1}

@@ -207,7 +207,7 @@ public class LevelSerializer
         sh.Stream.WriteByte((byte)'m');
         sh.Stream.WriteByte((byte)'u');
         sh.Stream.WriteByte((byte)'l');
-        sh.Stream.WriteByte((byte)'5');
+        sh.Stream.WriteByte((byte)'6');
 
         if (GameObject.Find("StartPad") == null)
         {
@@ -236,6 +236,12 @@ public class LevelSerializer
         if (lt != null)
             author = lt.Author;
         sh.Stream.WriteString(author);
+
+        PlayModifiers phym = GameObject.FindObjectOfType<PlayModifiers>();
+        string physParams = "";
+        if (phym != null)
+            physParams = phym.ToJSON();
+        sh.Stream.WriteString(physParams);
 
         var hashStream = new SerializerHelper();
         hashStream.Write(scene);
@@ -279,9 +285,9 @@ public class LevelSerializer
             mask = lms.shadowMask;
         }
 
-        if (color != null && color.format != TextureFormat.DXT5)
+        if (color != null && color.format != TextureFormat.DXT5Crunched)
         {
-            failCause = "Lightmap Color Texture not DTX5 Compressed - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
+            failCause = "Lightmap Color Texture not DTX5 Crunched - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
             Debug.Log("Color Format: " + color.format);
             Selection.activeObject = color;
         }
@@ -292,16 +298,16 @@ public class LevelSerializer
             Selection.activeObject = dir;
         }
         */
-        if (mask != null && mask.format != TextureFormat.DXT1)
+        if (mask != null && !(mask.format == TextureFormat.DXT1 || mask.format == TextureFormat.DXT1Crunched))
         {
-            failCause = "Lightmap Shadow Texture not DTX1 Compressed - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
+            failCause = "Lightmap Shadow Texture not DTX1 Crunched - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
             Debug.Log("Shadow Format: " + mask.format);
             Selection.activeObject = mask;
         }
 
 
         SerializeTexture(ref sh, color);
-        SerializeTexture(ref sh, dir);
+        SerializeTexture(ref sh, new Texture2D(2,2));
         SerializeTexture(ref sh, mask);
     }
 
@@ -496,19 +502,24 @@ public class LevelSerializer
         p[LevelObject.MOVER_MOVEFIRST] = ev.moveFirst;
         p[LevelObject.MOVER_SPLINESPEED] = ev.splineSpeed;
         p[LevelObject.MOVER_KEEPORIENTATION] = ev.KeepOrientation;
+
+        p[LevelObject.MOVER_ENABLEBOB] = ev.EnableBob;
+        if (ev.EnableBob)
+        {
+            p[LevelObject.MOVER_BOBOFFSET] = ev.BobOffset;
+            p[LevelObject.MOVER_BOBPERIOD] = ev.BobPeriod;
+            lo.SetVector3(LevelObject.MOVER_BOBVECTOR, ev.BobVector);
+        }
         // Also the spline.
-        /* -- No spline elevators for now
         if(ev.mode == ElevatorMover.Mode.Spline)
         {
             var splineGo = ev.splineGo;
-            var spline = splineGo.GetComponent<Battlehub.SplineEditor.Spline>();
             
             p[LevelObject.SPLINE] = true;
-            p[LevelObject.SPLINE_COUNT] = spline.transform.childCount;
+            p[LevelObject.SPLINE_COUNT] = splineGo.transform.childCount;
             for(var i=0; i<splineGo.transform.childCount; i++)
                 lo.SetVector3(LevelObject.SPLINE_POSITION + i, splineGo.transform.GetChild(i).transform.position);
         }
-        */
     }
 
     void SerializeMisc(GameObject go, LevelObject lo)

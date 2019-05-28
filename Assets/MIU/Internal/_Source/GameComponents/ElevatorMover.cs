@@ -66,7 +66,13 @@ public class ElevatorMover : MonoBehaviour
 
     [Tooltip("On startup, move first or pause first?")]
     public bool moveFirst = false;
-    
+
+    [Header("Bobbing")]
+    [Tooltip("Enable Bobbing Up/Down (for rotating platforms)")]
+    public bool EnableBob = false;
+    public Vector3 BobVector = Vector3.up;
+    public float BobPeriod = 2.5f, BobOffset = 0.0f;
+
     #endregion
 
     #region Spline

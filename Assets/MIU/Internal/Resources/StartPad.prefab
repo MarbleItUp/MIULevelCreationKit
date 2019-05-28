@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4359122804126382}
-  - component: {fileID: 33515920033453890}
-  - component: {fileID: 23093622830565296}
   - component: {fileID: 114593839402949662}
+  - component: {fileID: 23531265620240964}
+  - component: {fileID: 33272425611415324}
   m_Layer: 0
-  m_Name: PadLowPoly
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ GameObject:
   m_Layer: 0
   m_Name: StartPad
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 638e9beac64ed9746881a9db35326207, type: 3}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -93,15 +93,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870303072451076}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 8, y: 38, z: -12.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4359122804126382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23093622830565296
+--- !u!23 &23531265620240964
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -115,7 +115,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9a8ba3c3aee8f8e4e9b186f9943cc783, type: 2}
+  - {fileID: 2100000, guid: edae45faa4026d5498380b90f514bf34, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,13 +135,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33515920033453890
+--- !u!33 &33272425611415324
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458731455455372}
-  m_Mesh: {fileID: 4300000, guid: 7a2f2a27a625a904ebc3804674da51b2, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114593839402949662
 MonoBehaviour:
   m_ObjectHideFlags: 1
