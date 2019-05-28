@@ -36,7 +36,7 @@ From the Unity menu bar select *Assets > Import Package > Custom Package...*
 
  ![image alt text](ReadmeImages/image_1.png)
 
-Then select  MIU_LevelCreationKit.unitypackage which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
+Then select *MIU_LevelCreationKit.unitypackage* which can be downloaded from this repository. Select Ok and wait for the package to complete importing.
 
 You should see a new option on the Unity menu bar called "Marble It Up".
 
