@@ -93,7 +93,7 @@ Repeat that process for the remaining 5 objects in the LearningToRoll group and 
 
 Now we have the visual meshes ready, but we need to make them physical! So, select all 6 objects inside the LearningToRoll object and press the Add Component button in the Inspector Window. Type in "*Mesh Collider*" and select that when it shows up. Then at the top right of the Inspector Window check the “*Static*” checkbox. This tells the Level Builder that the geometry won’t move and that it should treat it as collidable with the marble. Finally drag and drop the entire *LearningToRoll* object into the Static group in the Scene Hierarchy.
 
-Now, any level requires a **Start Pad**, **End Pad**, and **Level Bounds** ... so lets make them!
+Now, any level requires a **Start Pad**, **End Pad**, and **Level Bounds**... so let's make them!
 
 Creating special gameplay items like Pads, Power-ups, Bumpers, etc is easy. Just open up the correct section in the *Level Kit Window* and click on button for the object you want to make. Let’s make a Start Pad, an End Pad, and the Level Bounds which are all under the *Core* section.
 
@@ -103,13 +103,13 @@ Let’s move the Start and End pads into their correct locations at the start an
 
 ![image alt text](ReadmeImages/image_8.png)
 
-Once the Start and End pads are placed, lets adjust the Level Bounds so that it encompases the entire level. Select the LevelBounds object and adjust its position and Box Collider Size so that it fits nicely around the level.
+Once the Start and End pads are placed, let's adjust the Level Bounds so that it encompasses the entire level. Select the LevelBounds object and adjust its position and Box Collider Size so that it fits nicely around the level.
 
 Your resulting bounds should look something like this:
 
 ![image alt text](ReadmeImages/image_9.png)
 
-We’re almost ready to export the level, but lets add a rock and a bumper first.
+We’re almost ready to export the level, but let's add a rock and a bumper first.
 
 You can add a bumper the same way you added the Start Pad, which is in Gameplay section of the *Level Kit Window*, place it wherever you like on the level.
 
@@ -183,7 +183,7 @@ To create a new spline, create an empty GameObject and add the Spline Drawer com
 
 ## Basher
 
-The Basher prefab is a special Moving Platform used to knock mables off the map. To maintain consistency with other maps, the best practice is to only modify the Delta value of the Elevator Mover component and object’s position and rotation.
+The Basher prefab is a special Moving Platform used to knock marbles off the map. To maintain consistency with other maps, the best practice is to only modify the Delta value of the Elevator Mover component and object’s position and rotation.
 <a name="surfaces"/>
 # **Special Surfaces**
 
