@@ -287,7 +287,7 @@ public class LevelSerializer
 
         if (color != null && color.format != TextureFormat.DXT5Crunched)
         {
-            failCause = "Lightmap Color Texture not DTX5 Crunched - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
+            failCause = "Lightmap Color Texture not DXT5 Crunched.";
             Debug.Log("Color Format: " + color.format);
             Selection.activeObject = color;
         }
@@ -300,7 +300,7 @@ public class LevelSerializer
         */
         if (mask != null && !(mask.format == TextureFormat.DXT1 || mask.format == TextureFormat.DXT1Crunched))
         {
-            failCause = "Lightmap Shadow Texture not DTX1 Crunched - Check requirements here: https://github.com/MarbleItUp/MIULevelCreationKit/blob/master/README.md#lightmaps";
+            failCause = "Lightmap Shadow Texture not DXT1 Crunched.";
             Debug.Log("Shadow Format: " + mask.format);
             Selection.activeObject = mask;
         }

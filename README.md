@@ -93,7 +93,7 @@ Repeat that process for the remaining 5 objects in the LearningToRoll group and 
 
 Now we have the visual meshes ready, but we need to make them physical! So, select all 6 objects inside the LearningToRoll object and press the Add Component button in the Inspector Window. Type in "*Mesh Collider*" and select that when it shows up. Then at the top right of the Inspector Window check the “*Static*” checkbox. This tells the Level Builder that the geometry won’t move and that it should treat it as collidable with the marble. Finally drag and drop the entire *LearningToRoll* object into the Static group in the Scene Hierarchy.
 
-Now, any level requires a **Start Pad**, **End Pad**, and **Level Bounds** ... so lets make them!
+Now, any level requires a **Start Pad**, **End Pad**, and **Level Bounds**... so let's make them!
 
 Creating special gameplay items like Pads, Power-ups, Bumpers, etc is easy. Just open up the correct section in the *Level Kit Window* and click on button for the object you want to make. Let’s make a Start Pad, an End Pad, and the Level Bounds which are all under the *Core* section.
 
@@ -103,13 +103,13 @@ Let’s move the Start and End pads into their correct locations at the start an
 
 ![image alt text](ReadmeImages/image_8.png)
 
-Once the Start and End pads are placed, lets adjust the Level Bounds so that it encompases the entire level. Select the LevelBounds object and adjust its position and Box Collider Size so that it fits nicely around the level.
+Once the Start and End pads are placed, let's adjust the Level Bounds so that it encompasses the entire level. Select the LevelBounds object and adjust its position and Box Collider Size so that it fits nicely around the level.
 
 Your resulting bounds should look something like this:
 
 ![image alt text](ReadmeImages/image_9.png)
 
-We’re almost ready to export the level, but lets add a rock and a bumper first.
+We’re almost ready to export the level, but let's add a rock and a bumper first.
 
 You can add a bumper the same way you added the Start Pad, which is in Gameplay section of the *Level Kit Window*, place it wherever you like on the level.
 
@@ -183,7 +183,7 @@ To create a new spline, create an empty GameObject and add the Spline Drawer com
 
 ## Basher
 
-The Basher prefab is a special Moving Platform used to knock mables off the map. To maintain consistency with other maps, the best practice is to only modify the Delta value of the Elevator Mover component and object’s position and rotation.
+The Basher prefab is a special Moving Platform used to knock marbles off the map. To maintain consistency with other maps, the best practice is to only modify the Delta value of the Elevator Mover component and object’s position and rotation.
 <a name="surfaces"/>
 # **Special Surfaces**
 
@@ -201,11 +201,11 @@ The Basher prefab is a special Moving Platform used to knock mables off the map.
 
 The level file format allows encoding of lightmaps to add fantastic visual fidelity to custom levels. With this feature comes the possibility for extremely large file sizes if not properly checked. Due to this the MIU Level Kit will enforce lightmap texture compression, ensuring that level files are as small as possible. Due to some engine limitations, this process can't be completely automated and will require some tweaking to get working correctly. This section is meant to explain what compression type the Level Kit requires and how to achieve it.
 
-If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (Lightmap needs transparency values). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are **DTX5 Compressed** for Lightmap and **DTX1 Compressed** for Shadowmap, both with Crunch compression enabled.
+If your lightmap settings have been configured correctly, when you generate lighting for a level you should have two new textures - a Lightmap and a Shadowmap. Lightmaps create the color values of the lighting, and the shadowmap acts as a mask, telling the lighting where to use the lightmap texture on the geometry. These two textures need different features (Lightmap needs transparency values). Due to this we have found that the best 'small footprint' textures to use that are *Unity Version Independent* are **DXT5 Compressed** for Lightmap and **DXT1 Compressed** for Shadowmap, both with Crunch compression enabled.
 
 ![image alt text](ReadmeImages/image_14.png)
 
-The image above shows how to achieve this texture compression setting in Unity 2017.3 but there may be differences in newer/older Unity versions. The important thing is to get DTX1/DTX5 Compressed format to show at the bottom of the texture preview image. Without these compression settings your level will fail to export.
+The image above shows how to achieve this texture compression setting in Unity 2017.3 but there may be differences in newer/older Unity versions. The important thing is to get DXT1/DXT5 Compressed format to show at the bottom of the texture preview image. Without these compression settings your level will fail to export.
 
 ## Lightmaps with Imported Models
 
