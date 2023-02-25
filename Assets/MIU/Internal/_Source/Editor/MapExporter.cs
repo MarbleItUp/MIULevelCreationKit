@@ -10,6 +10,9 @@ public class MapExporter : EditorWindow
 {
     public static bool hasResult = false;
 
+    public static string exportPath = "Assets/";
+    public static readonly string settingsPath = "Assets/MIU/Internal/LevelExporterPath.txt";
+
     MapExporter()
     {
         titleContent = new GUIContent("Level Exporter");
@@ -17,6 +20,12 @@ public class MapExporter : EditorWindow
 
     public static void RunGUI()
     {
+        StreamReader reader = new StreamReader(settingsPath);
+        string fileContent = reader.ReadToEnd();
+        reader.Close();
+
+        exportPath = fileContent.Replace("\n", "");
+
         var bigLabel = new GUIStyle(GUI.skin.label);
         bigLabel.fontStyle = FontStyle.Bold;
         bigLabel.richText = true;
@@ -32,6 +41,12 @@ public class MapExporter : EditorWindow
         GUILayout.BeginVertical();
 
         GUILayout.Label("Level Export", bigLabel);
+
+        GUILayout.Label("Current Export File Path: " + exportPath, smallLabel);
+
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Change Export File Location", bigButton)) changeExportFilePath();
+        GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Export", bigButton)) BakeScene();
@@ -58,7 +73,7 @@ public class MapExporter : EditorWindow
                 GUILayout.Label("Export Size: " + LevelSerializer.levelSize + "kb" , smallLabel);
                 GUILayout.EndHorizontal();
                 GUILayout.BeginHorizontal();
-                GUILayout.Label("File Location: " + ("Assets/" + LevelSerializer.GetCurrentSceneLevelId().Replace('_', ' ') + ".level"), smallLabel);
+                GUILayout.Label("File Location: " + (exportPath + LevelSerializer.GetCurrentSceneLevelId().Replace('_', ' ') + ".level"), smallLabel);
                 GUILayout.EndHorizontal();
             }
         }
@@ -125,7 +140,7 @@ public class MapExporter : EditorWindow
 
         if(LevelSerializer.failCause.Length == 0)
         {
-            string filePath = "Assets/" + LevelSerializer.GetCurrentSceneLevelId() + ".level";
+            string filePath = exportPath + LevelSerializer.GetCurrentSceneLevelId() + ".level";
 
             FileStream file;
             if (!File.Exists(filePath))
@@ -140,6 +155,29 @@ public class MapExporter : EditorWindow
         else
             Debug.Log("<color=#ff3232>Export Failed:</color> " + LevelSerializer.failCause);
         hasResult = true;
+    }
+
+    private static void changeExportFilePath() 
+    {
+        string filePath = EditorUtility.OpenFolderPanel("Export file location", "", "");
+
+        if (filePath.Length != 0) 
+        {
+            exportPath = filePath + "/";
+
+            StreamWriter writer = new StreamWriter(settingsPath, false);
+            writer.Write(exportPath);
+            writer.Close();
+
+            AssetDatabase.ImportAsset(settingsPath);
+
+            if (!File.Exists(settingsPath))
+                File.Create(settingsPath);
+
+            Debug.Log("Export file location changed to: " + filePath);
+        }
+        else 
+            Debug.Log("No folder found at: " + filePath);
     }
 
     private Transform TestContainer = null;
